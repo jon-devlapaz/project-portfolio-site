@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicaid Policy Search Agent - Jonathan De La Paz</title>
+    <meta name="description"
+        content="A sanitized case study of a citation-backed policy-search agent for Medicaid prior authorization operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="../index.html" class="logo"><span class="logo-text">JDP.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#projects">All projects</a></li>
+                <li><a href="../index.html#contact" class="btn btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Medicaid Policy Search Agent</h1>
+                    <div class="separator"></div>
+                </div>
+
+                <article class="project-card lead-card">
+                    <p class="overline">Sanitized implementation case study</p>
+                    <h2 class="project-title">From manual policy search to citation-backed review</h2>
+                    <p class="project-oneliner">A Microsoft Copilot Studio RAG agent covering 1,800+ pages of Medicaid
+                        policy reduced routine lookup time from 10-20 minutes to under 30 seconds.</p>
+
+                    <div class="lead-metrics-row">
+                        <div class="lead-metric-box">
+                            <span class="lead-metric-val">10-20 min &rarr; &lt;30 sec</span>
+                            <span class="lead-metric-label">Routine policy lookup</span>
+                        </div>
+                        <div class="lead-metric-box">
+                            <span class="lead-metric-val">1,800+ pages</span>
+                            <span class="lead-metric-label">Searchable policy corpus</span>
+                        </div>
+                    </div>
+
+                    <h3>Problem</h3>
+                    <p>Prior authorization reviewers needed to locate precise policy language under service-level
+                        deadlines. Manual navigation was slow, and a fast answer without traceable support would have
+                        created a different risk.</p>
+
+                    <h3>Constraints</h3>
+                    <ul class="timeline-bullets bullet-blue">
+                        <li>Keep the reviewer responsible for the clinical decision.</li>
+                        <li>Return citations and risk flags with the answer.</li>
+                        <li>Make uncertainty and out-of-scope questions visible.</li>
+                        <li>Do not publish policy excerpts, production data, or internal system details.</li>
+                    </ul>
+
+                    <h3>Approach</h3>
+                    <p>I configured a retrieval-augmented search workflow in Microsoft Copilot Studio. The response
+                        pattern paired a concise answer with source citations and risk flags so reviewers could verify
+                        the result instead of treating the model as an authority.</p>
+
+                    <h3>Outcome</h3>
+                    <p>The workflow reduced routine policy lookup from 10-20 minutes to under 30 seconds. The
+                        result is an observed operational comparison, not a controlled causal study, and final review
+                        remained with the clinician.</p>
+
+                    <div class="project-callout">
+                        <p><strong>Public-proof boundary:</strong> This case study contains aggregate, resume-supported
+                            outcomes only. It includes no PHI, provider identifiers, policy passages, screenshots,
+                            prompts, credentials, production data, or employer-system architecture.</p>
+                    </div>
+
+                    <div class="project-meta">
+                        <span>Microsoft Copilot Studio</span>
+                        <span>RAG</span>
+                        <span>Prior Authorization</span>
+                        <span>Clinical Review</span>
+                    </div>
+                </article>
+
+                <p><a href="../index.html#projects" class="btn btn-secondary">Back to portfolio</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Jonathan De La Paz BSN, RN</p>
+        </div>
+    </footer>
+</body>
+
+</html>

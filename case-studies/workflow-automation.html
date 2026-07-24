@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy-Conscious Workflow Automation - Jonathan De La Paz</title>
+    <meta name="description"
+        content="A sanitized case study of client-side workflow automation for Medicaid prior authorization operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="../index.html" class="logo"><span class="logo-text">JDP.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#projects">All projects</a></li>
+                <li><a href="../index.html#contact" class="btn btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Privacy-Conscious Workflow Automation</h1>
+                    <div class="separator"></div>
+                </div>
+
+                <article class="project-card lead-card">
+                    <p class="overline">Sanitized implementation case study</p>
+                    <h2 class="project-title">Faster prior authorization processing without external PHI transfer</h2>
+                    <p class="project-oneliner">A client-side Python tool standardized repetitive work and increased
+                        observed throughput from 5 to 25 authorizations per hour.</p>
+
+                    <div class="lead-metrics-row">
+                        <div class="lead-metric-box">
+                            <span class="lead-metric-val">5 &rarr; 25 per hour</span>
+                            <span class="lead-metric-label">Observed individual throughput</span>
+                        </div>
+                        <div class="lead-metric-box">
+                            <span class="lead-metric-val">Client-side by design</span>
+                            <span class="lead-metric-label">PHI kept within the existing local session</span>
+                        </div>
+                    </div>
+
+                    <h3>Problem</h3>
+                    <p>Repetitive calculations, standardized comments, and interface navigation consumed time that
+                        should have gone to clinical review. Any improvement also had to respect the privacy boundary
+                        around authorization data.</p>
+
+                    <h3>Constraints</h3>
+                    <ul class="timeline-bullets bullet-blue">
+                        <li>Keep PHI inside the existing local session.</li>
+                        <li>Do not save, log, or transmit patient data to an external service.</li>
+                        <li>Standardize repetitive steps without replacing clinical judgment.</li>
+                        <li>Keep the clinician responsible for the authorization decision.</li>
+                    </ul>
+
+                    <h3>Approach</h3>
+                    <p>I built a client-side Python interface for unit calculations, standardized comment generation,
+                        and repetitive interaction steps. The tool accelerated the clerical path while leaving the
+                        authorization decision with the clinician.</p>
+
+                    <h3>Outcome</h3>
+                    <p>Observed individual throughput increased from 5 to 25 authorizations per hour. The comparison
+                        reflects the workflow before and after the tool; it is not a randomized study or a claim that
+                        every user or case type would achieve the same result.</p>
+
+                    <div class="project-callout">
+                        <p><strong>Public-proof boundary:</strong> This case study describes the workflow at a high
+                            level. It contains no PHI, screenshots, patient or provider identifiers, production data,
+                            credentials, internal endpoints, or employer-system implementation details.</p>
+                    </div>
+
+                    <div class="project-meta">
+                        <span>Python</span>
+                        <span>Workflow Design</span>
+                        <span>Prior Authorization</span>
+                        <span>Privacy by Design</span>
+                    </div>
+                </article>
+
+                <p><a href="../index.html#projects" class="btn btn-secondary">Back to portfolio</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Jonathan De La Paz BSN, RN</p>
+        </div>
+    </footer>
+</body>
+
+</html>
