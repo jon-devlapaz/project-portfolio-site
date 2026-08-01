@@ -8,27 +8,29 @@
     <meta name="description"
         content="Portfolio of Jonathan De La Paz, an RN and utilization-management leader who improves healthcare operations with privacy-conscious automation.">
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Use Outfit for premium, sleek typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-
+    <meta name="theme-color" content="#07080a">
+    <script>
+      try {
+        if (localStorage.getItem("pyz-motion") === "full") {
+          document.documentElement.classList.add("pyz-motion-full");
+        }
+      } catch (e) {}
+    </script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.css">
 </head>
 
 <body>
-    <!-- Background Elements -->
-    <div class="bg-gradient"></div>
-    <div class="bg-grid"></div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div id="ambient-graph" aria-hidden="true"></div>
+    <canvas id="cursor-canvas" aria-hidden="true"></canvas>
 
-    <!-- Navigation -->
     <header class="header">
-        <nav class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-text">JDP.</span>
-            </a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <nav class="nav-container" aria-label="Primary">
+            <a href="#home" class="logo">JDP.</a>
+            <button class="mobile-menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
             <ul class="nav-links">
@@ -36,121 +38,92 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-                </li>
-                <li><a href="#contact" class="btn btn-primary">Contact</a></li>
+                <li><a href="assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                <li><a href="#contact" class="btn-primary" data-cursor="cta">Contact</a></li>
                 <li class="nav-socials">
-                    <a href="https://www.linkedin.com/in/jonathan-delapaz/" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
+                    <a href="https://www.linkedin.com/in/jonathan-delapaz/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
-                    <a href="https://x.com/jon_dev_lapaz" target="_blank" rel="noopener noreferrer"
-                        aria-label="X (Twitter)">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
+                    <a href="https://x.com/jon_dev_lapaz" target="_blank" rel="noopener noreferrer" aria-label="X">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Home / Hero Section -->
-        <section id="home" class="hero section">
-            <div class="container hero-content">
-                <div class="hero-text animate-fade-in-up">
-                    <p class="overline">Utilization Management &amp; Clinical Operations</p>
-                    <h1 class="hero-title">Clinical judgment, operational leadership, and practical automation.</h1>
-                    <p class="hero-subtitle">RN and healthcare operations leader who turns prior authorization policy
-                        and frontline constraints into safer, faster workflows.</p>
-                    <div class="hero-ctas">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <section id="home" class="hero section" data-camera="hero">
+            <div class="container">
+                <div class="scrim">
+                    <p class="overline pyz-rise" style="--rise-delay: 0.1s">Utilization Management &amp; Clinical Operations</p>
+                    <h1 class="hero-title" data-word-rise data-cursor="text">Clinical operations leadership backed by <span class="brand-clip">hands-on automation</span>.</h1>
+                    <p class="hero-subtitle pyz-rise" style="--rise-delay: 0.42s" data-cursor="text">I'm an RN who has led Medicaid prior authorization operations and built
+                        privacy-conscious tools for policy search, staffing, and repetitive clinical work.</p>
+                    <div class="hero-ctas pyz-rise" style="--rise-delay: 0.52s">
+                        <a href="#projects" class="btn btn-primary" data-cursor="cta">View Projects</a>
                         <a href="#experience" class="btn btn-secondary">See Experience</a>
                     </div>
                 </div>
-                <div class="hero-graph" id="skill-graph">
-                    <!-- D3 Graph will render here -->
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse"></div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section section-alt">
+        <section id="about" class="section" data-camera="clinical-ops">
             <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2>01. About</h2>
-                    <div class="separator"></div>
-                </div>
-                <div class="about-content animate-on-scroll delay-1">
-                    <div class="about-grid">
-                        <div class="about-text-column">
-                            <h3>The short version</h3>
-                            <p>I work where clinical judgment, operations, and technology meet: workflow discovery,
-                                implementation, adoption, quality, training, and measurable improvement.</p>
-                            <p>Across nursing, utilization management, and Medicaid prior authorization, I have led a
-                                45+ person operation delivering 15,000+ decisions monthly and built privacy-conscious
-                                tools for policy search, staffing, and repetitive clinical workflows.</p>
-                            <p>That combination exists because of the path. Bedside nursing built the clinical
-                                reasoning. Three years adjudicating PA requests built the policy fluency. Supervising a
-                                clinical team built the operational lens. Building and deploying workflow tools added
-                                the technical implementation experience. Each layer made the next one possible.</p>
-                        </div>
-
-                        <div class="about-metrics-column">
-                            <div class="metric-card metric-blue">
-                                <span class="metric-number">5x</span>
-                                <span class="metric-label">PA processing throughput</span>
-                            </div>
-                            <div class="metric-card metric-green">
-                                <span class="metric-number">15-20 min</span>
-                                <span class="metric-label">Daily planning saved per supervisor</span>
-                            </div>
-                            <div class="metric-card metric-amber">
-                                <span class="metric-number">1,800+ pages</span>
-                                <span class="metric-label">Indexed by RAG agent</span>
-                            </div>
-                        </div>
+                <div class="scrim scrim-wide">
+                    <div class="section-header pyz-rise">
+                        <p class="overline">01 · About</p>
+                        <h2>The short version</h2>
                     </div>
+                    <div class="about-content pyz-rise">
+                        <div class="about-grid">
+                            <div class="about-text-column">
+                                <p>I've worked the same problems from four seats: bedside RN, prior authorization
+                                    clinician, supervisor, and builder.</p>
+                                <p>I led a 45+ person operation delivering 15,000+ Medicaid authorization decisions each
+                                    month. I also built tools that shortened policy searches, simplified staffing, and
+                                    removed repetitive data entry without sending PHI to external services.</p>
+                                <p>That path keeps the work grounded. I know how a policy reads, how a clinician applies
+                                    it under time pressure, and what a supervisor needs to keep the operation moving. When
+                                    software can remove the busywork safely, I build it.</p>
+                                <p>I took a hiatus and used it on agent systems. Harnesses, context engineering, local
+                                    models, evals, knowledge wikis. I wanted the messy parts of how they behave before I
+                                    put any of that next to clinical work.</p>
+                            </div>
 
-                    <div class="about-traits-row">
-                        <span class="badge">Builder</span>
-                        <span class="badge">Systems Thinker</span>
-                        <span class="badge">Clinical-Technical Bridge</span>
+                            <div class="about-stats" aria-label="Highlights">
+                                <div><strong>5x</strong><span>PA processing throughput</span></div>
+                                <div><strong>15–20 min</strong><span>Daily planning saved per supervisor</span></div>
+                                <div><strong>1,800+ pages</strong><span>Indexed by RAG agent</span></div>
+                            </div>
+                        </div>
+
+                        <div class="about-traits-row">
+                            <span class="badge">Registered Nurse</span>
+                            <span class="badge">PA Operations</span>
+                            <span class="badge">Workflow Automation</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="section">
+        <section id="experience" class="section" data-camera="clinical-ops">
             <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2>02. Experience</h2>
-                    <div class="separator"></div>
+                <div class="section-header pyz-rise">
+                    <p class="overline">02 · Experience</p>
+                    <h2>From bedside care to payer operations</h2>
                 </div>
-                <div class="timeline animate-on-scroll delay-1">
-                    <!-- Timeline Line -->
-                    <div class="timeline-line"></div>
-
-                    <!-- Timeline Item 1 -->
-                    <div class="timeline-item right" id="role-pa-supervisor">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-graph-container"></div>
-                        <div class="timeline-content border-amber">
-                            <span class="timeline-date">March 2025 &mdash; March 2026</span>
-                            <h3 class="timeline-title">Prior Authorization Supervisor</h3>
-                            <h4 class="timeline-company">TMHP / Accenture</h4>
-                            <div class="timeline-body">
+                <ol class="role-list pyz-rise">
+                    <li class="role-item" id="role-pa-supervisor">
+                        <div class="role-content">
+                            <span class="eyebrow">March 2025 &mdash; March 2026</span>
+                            <h3 class="role-title">Prior Authorization Supervisor</h3>
+                            <p class="role-company">TMHP / Accenture</p>
+                            <div class="role-body">
                                 <p>Led a team of 45+ staff including 18 PA clinicians, processing 15,000+ Medicaid
                                     authorization requests per month across DME, ambulance, private duty nursing, and
                                     other service types. Owned escalation routing, quality review, staffing, policy
@@ -158,39 +131,33 @@
                                 </p>
                                 <div class="project-expandable">
                                     <div class="project-details">
-                                        <ul class="timeline-bullets bullet-amber">
+                                        <ul class="role-bullets">
                                             <li>Converted policy ambiguity into documented, defensible clinical
                                                 decisions and reusable team guidance.</li>
                                             <li>Built and deployed a citation-backed policy-search agent and designed
                                                 a qualification-based staffing planner that saved each supervisor
-                                                15-20 minutes daily.</li>
+                                                15–20 minutes daily.</li>
                                         </ul>
                                     </div>
                                     <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Timeline Item 2 -->
-                    <div class="timeline-item left" id="role-pa-clinician">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-graph-container"></div>
-                        <div class="timeline-content border-blue">
-                            <span class="timeline-date">April 2022 &mdash; February 2025</span>
-                            <h3 class="timeline-title">Prior Authorization Clinician (RN)</h3>
-                            <h4 class="timeline-company">TMHP</h4>
-                            <div class="timeline-body">
-                                <p>The clinical decision-maker on Medicaid prior authorization requests, applying TMPPM
-                                    criteria to approve, deny, or pend cases across DME, therapy, nursing services, and
-                                    ambulance transport. Three years of adjudicating cases under SLA pressure with
-                                    incomplete provider documentation built the policy fluency that now drives both
-                                    supervisory judgment and automation design.</p>
+                    <li class="role-item" id="role-pa-clinician">
+                        <div class="role-content">
+                            <span class="eyebrow">April 2022 &mdash; February 2025</span>
+                            <h3 class="role-title">Prior Authorization Clinician (RN)</h3>
+                            <p class="role-company">TMHP</p>
+                            <div class="role-body">
+                                <p>Reviewed Medicaid prior authorization requests against TMPPM criteria across DME,
+                                    therapy, nursing services, and ambulance transport. Three years of approving,
+                                    denying, and pending cases under SLA pressure taught me where policy is clear, where
+                                    documentation fails, and where clinicians lose time.</p>
                                 <div class="project-expandable">
                                     <div class="project-details">
-                                        <ul class="timeline-bullets bullet-blue">
+                                        <ul class="role-bullets">
                                             <li>Identified recurring documentation gaps across provider submissions and
                                                 developed communication patterns that improved response quality,
                                                 turning a source of constant rework into a manageable process.</li>
@@ -204,25 +171,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Timeline Item 3 -->
-                    <div class="timeline-item right" id="role-home-health">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-graph-container"></div>
-                        <div class="timeline-content border-teal">
-                            <span class="timeline-date">April 2019 &mdash; March 2022</span>
-                            <h3 class="timeline-title">Home Health RN</h3>
-                            <h4 class="timeline-company">Home Health Agency</h4>
-                            <div class="timeline-body">
-                                <p>Delivered direct patient care across a complex home health caseload while building
-                                    the clinical and technical foundation for later healthcare operations and
-                                    implementation work.</p>
+                    <li class="role-item" id="role-home-health">
+                        <div class="role-content">
+                            <span class="eyebrow">April 2019 &mdash; March 2022</span>
+                            <h3 class="role-title">Home Health RN</h3>
+                            <p class="role-company">Home Health Agency</p>
+                            <div class="role-body">
+                                <p>Managed a complex home health caseload and saw how much clinical time disappeared into
+                                    documentation. That was where I started using Python to remove repetitive EMR work.</p>
                                 <div class="project-expandable">
                                     <div class="project-details">
-                                        <ul class="timeline-bullets bullet-teal">
+                                        <ul class="role-bullets">
                                             <li>Built a suite of Python Selenium scripts that automated the full
                                                 documentation submission workflow in the home health EMR,
                                                 reducing per-encounter documentation time from 45 minutes to 4 minutes.
@@ -237,28 +198,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Timeline Item 4 -->
-                    <div class="timeline-item left" id="role-neuro">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-graph-container"></div>
-                        <div class="timeline-content border-blue">
-                            <span class="timeline-date">June 2018 &mdash; March 2019</span>
-                            <h3 class="timeline-title">Neuroscience Medical-Surgical RN</h3>
-                            <h4 class="timeline-company">Neuroscience Med-Surg Unit</h4>
-                            <div class="timeline-body">
-                                <p>Acute care nursing on a high-acuity neuroscience and medical-surgical unit,
-                                    working directly with patients, families, and interdisciplinary care teams. Before I
-                                    ever touched payer operations or automation, I was the end user of the healthcare
-                                    system. That perspective drives every workflow I've designed since: if it doesn't
-                                    ultimately serve the patient and the clinician at the bedside, it doesn't matter.
-                                </p>
+                    <li class="role-item" id="role-neuro">
+                        <div class="role-content">
+                            <span class="eyebrow">June 2018 &mdash; March 2019</span>
+                            <h3 class="role-title">Neuroscience Medical-Surgical RN</h3>
+                            <p class="role-company">Neuroscience Med-Surg Unit</p>
+                            <div class="role-body">
+                                <p>Worked directly with patients, families, and interdisciplinary teams on a high-acuity
+                                    neuroscience and medical-surgical unit. I learned healthcare operations first as the
+                                    person using them at the bedside. I still judge workflow changes by whether they help
+                                    the patient or the clinician doing the work.</p>
                                 <div class="project-expandable">
                                     <div class="project-details">
-                                        <ul class="timeline-bullets bullet-blue">
+                                        <ul class="role-bullets">
                                             <li>Authored research on mobile tablet-based activities for stroke recovery,
                                                 accepted for presentation at the American Association of Neuroscience
                                                 Nurses (AANN) national conference.</li>
@@ -272,38 +226,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section section-alt">
+        <section id="projects" class="section" data-camera="bridge">
             <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2>03. Projects</h2>
-                    <div class="separator"></div>
+                <div class="scrim scrim-wide">
+                    <div class="section-header pyz-rise">
+                        <p class="overline">03 · Projects</p>
+                        <h2>Workflow tools built around clinical work</h2>
+                    </div>
                 </div>
-                <div class="project-featured animate-on-scroll delay-1">
-                    <!-- Project Card 1 (Lead) -->
-                    <article class="project-card lead-card">
-                        <div class="lead-card-header">
-                            <span class="project-category">AI / RAG</span>
-                            <h3 class="project-title">Medicaid Policy Search Agent</h3>
-                            <p class="project-oneliner">AI agent that indexes 1,800+ pages of policy to deliver
-                                citation-backed answers in under 30 seconds.</p>
-                        </div>
-
-                        <div class="lead-metrics-row">
-                            <div class="lead-metric-box">
-                                <span class="lead-metric-val">10–20 min &rarr; 30 sec</span>
-                                <span class="lead-metric-label">Policy search time</span>
-                            </div>
-                            <div class="lead-metric-box">
-                                <span class="lead-metric-val">1,800+ pages</span>
-                                <span class="lead-metric-label">Indexed by RAG agent</span>
-                            </div>
-                        </div>
+                <div class="project-stack pyz-rise">
+                    <article class="project-entry">
+                        <span class="project-category">AI / RAG</span>
+                        <h3 class="project-title">Medicaid Policy Search Agent</h3>
+                        <p class="project-oneliner">AI agent that indexes 1,800+ pages of policy to deliver
+                            citation-backed answers in under 30 seconds.</p>
+                        <p class="project-metrics"><span>10–20 min → 30 sec · Policy search time</span><span>1,800+ pages indexed</span></p>
 
                         <p class="project-problem"><strong>Problem:</strong> PA clinicians were spending 10–20 minutes
                             manually searching a 1,800+ page policy corpus for a single clarification, risking missed
@@ -314,7 +257,7 @@
                                 <hr class="project-divider">
                                 <p><strong>What I built:</strong> A Microsoft Copilot RAG agent that indexes the policy
                                     corpus and returns concise answers with source and page citations.</p>
-                                <div style="margin: 0.75rem 0;">
+                                <div class="chip-row">
                                     <span class="feature-chip">Source &amp; page citations</span>
                                     <span class="feature-chip">Risk flags</span>
                                 </div>
@@ -322,7 +265,7 @@
                                     decision.</p>
 
                                 <div class="project-callout">
-                                    <p><strong>Why it matters:</strong> The tool reduced a routine 10-20 minute lookup
+                                    <p><strong>Result:</strong> The tool reduced a routine 10–20 minute lookup
                                         to under 30 seconds while keeping citations and risk flags visible to the
                                         reviewer. This public account uses aggregate outcomes only; it contains no
                                         policy excerpts, production data, or employer-system screenshots.</p>
@@ -340,23 +283,16 @@
                             <span>Knowledge Management</span>
                         </div>
                     </article>
-                </div>
 
-                <div class="project-grid animate-on-scroll delay-2">
-
-                    <!-- Project Card 2 -->
-                    <article class="project-card">
+                    <article class="project-entry">
                         <span class="project-category">Full-Stack / Algorithm</span>
                         <h3 class="project-title">Operations Dashboard + Planner</h3>
                         <p class="project-oneliner">Flask dashboard with real-time inventory visibility and a greedy
                             qualification-based algorithm that supports daily staffing assignments and saves each
-                            supervisor 15-20 minutes a day.
+                            supervisor 15–20 minutes a day.
                         </p>
 
-                        <div class="card-metric-callout">
-                            <span class="card-metric-val">15-20 min saved</span>
-                            <span class="card-metric-label">Daily planning per supervisor</span>
-                        </div>
+                        <p class="project-metrics"><span>15–20 min saved · Daily planning per supervisor</span></p>
 
                         <p class="project-problem"><strong>Problem:</strong> Daily staffing assignments were done by gut
                             feel without a transparent view of inventory and staff qualifications.</p>
@@ -365,7 +301,7 @@
                             <div class="project-details">
                                 <hr class="project-divider">
                                 <p><strong>What I built:</strong> A Flask web app with two modules:</p>
-                                <div style="margin: 0.75rem 0;">
+                                <div class="chip-row">
                                     <span class="feature-chip">Live inventory dashboard</span>
                                     <span class="feature-chip">Greedy allocation algorithm</span>
                                     <span class="feature-chip">Staff qualification matrix</span>
@@ -374,11 +310,10 @@
                                     and remaining volume as explicit criteria.</p>
 
                                 <div class="project-callout">
-                                    <p><strong>Why it matters:</strong> This is operational intelligence tooling &mdash;
-                                        data-driven resource optimization built by someone who actually does the work,
-                                        so the design reflects how supervisors think, not how engineers assume they do.
-                                        It supported planning for a 45+ person operation processing 15,000+ cases
-                                        monthly.</p>
+                                    <p><strong>Result:</strong> The planner saved each supervisor 15–20 minutes a day and
+                                        supported staffing for a 45+ person operation processing 15,000+ cases monthly.
+                                        Its recommendations stayed inspectable: supervisors could see the due dates,
+                                        qualifications, and remaining volume behind each assignment.</p>
                                 </div>
                             </div>
                             <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
@@ -393,17 +328,13 @@
 
                     </article>
 
-                    <!-- Project Card 3 -->
-                    <article class="project-card">
+                    <article class="project-entry">
                         <span class="project-category">Process Automation</span>
-                        <h3 class="project-title">PA Processing Automation GUI</h3>
-                        <p class="project-oneliner">Desktop GUI that automated repetitive PA data entry, 5x'ing
+                        <h3 class="project-title">PA Processing Automation</h3>
+                        <p class="project-oneliner">Desktop tool that automated repetitive PA data entry and raised
                             throughput from 5 to 25 cases per hour.</p>
 
-                        <div class="card-metric-callout">
-                            <span class="card-metric-val">5x throughput</span>
-                            <span class="card-metric-label">5/hr &rarr; 25/hr</span>
-                        </div>
+                        <p class="project-metrics"><span>5x throughput · 5/hr → 25/hr</span></p>
 
                         <p class="project-problem"><strong>Problem:</strong> Manual data entry (unit calculations,
                             comments, navigation) bottlenecked PA processing to 5 cases per hour, absorbing ~12 minutes
@@ -415,7 +346,7 @@
                                 <p><strong>What I built:</strong> A Python desktop application using PySimpleGUI that
                                     standardizes repetitive calculations, comments, and system interactions while
                                     keeping the clinician responsible for the authorization decision.</p>
-                                <div style="margin: 0.75rem 0;">
+                                <div class="chip-row">
                                     <span class="feature-chip">Auto-calculation of units</span>
                                     <span class="feature-chip">Standardized comment generation</span>
                                     <span class="feature-chip">Automated keystroke orchestration</span>
@@ -424,15 +355,15 @@
                                     <p><strong>Security &amp; Compliance:</strong> Operated strictly client-side to drive UI
                                         interactions without saving, logging, or transmitting any PHI to external
                                         servers.</p>
-                                    <p style="margin-top: 0.5rem;"><strong>Why it matters:</strong> Built this as an
-                                        individual contributor, before
-                                        any leadership title. The instinct to see a broken workflow and build the fix,
-                                        rather than flag it and wait, is the same instinct that drives
-                                        implementation work.</p>
+                                    <p class="callout-follow"><strong>Result:</strong> I built this as an individual
+                                        contributor and increased my own throughput from 5 to 25 authorizations per hour.
+                                        The clinician still made every authorization decision.</p>
                                 </div>
                             </div>
                             <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
                         </div>
+
+                        <a href="case-studies/workflow-automation.html" class="btn btn-secondary">Read case study</a>
 
                         <div class="project-meta">
                             <span>Python</span>
@@ -440,25 +371,15 @@
                             <span>RPA</span>
                             <span>pyautogui</span>
                         </div>
-
-                        <a href="case-studies/workflow-automation.html" class="btn btn-secondary">Read case study</a>
                     </article>
 
-                    <!-- Project Card 4 -->
-                    <article class="project-card">
+                    <article class="project-entry">
                         <span class="project-category">Clinical Automation</span>
                         <h3 class="project-title">Selenium Documentation Automation</h3>
                         <p class="project-oneliner">Headless automation scripts that reduced home health
                             documentation time by 11x (from 45 to 4 minutes).</p>
 
-                        <div class="card-metric-callout" style="margin-bottom: var(--space-sm);">
-                            <span class="card-metric-val">11x faster</span>
-                            <span class="card-metric-label">Per-encounter documentation</span>
-                        </div>
-                        <div class="card-metric-callout">
-                            <span class="card-metric-val">45 min &rarr; 4 min</span>
-                            <span class="card-metric-label">Documentation time</span>
-                        </div>
+                        <p class="project-metrics"><span>11x faster · Per-encounter documentation</span><span>45 min → 4 min</span></p>
 
                         <p class="project-problem"><strong>Problem:</strong> Per-encounter clinical documentation
                             required ~45 minutes of tedious EMR form navigation instead of clinical thinking.</p>
@@ -468,22 +389,20 @@
                                 <hr class="project-divider">
                                 <p><strong>What I built:</strong> Headless Python automation using Selenium WebDriver.
                                 </p>
-                                <div style="margin: 0.75rem 0;">
+                                <div class="chip-row">
                                     <span class="feature-chip">Maps EMR workflow screen-by-screen</span>
                                     <span class="feature-chip">Branching script logic</span>
                                     <span class="feature-chip">Static &amp; dynamic field handling</span>
                                 </div>
-                                <p>The design challenge wasn't Selenium &mdash; it was understanding the clinical
-                                    documentation logic well enough to automate it without introducing errors into the
-                                    patient record.</p>
+                                <p>The hard part was mapping the clinical documentation logic closely enough to automate
+                                    the form work without introducing errors into the patient record.</p>
 
                                 <div class="project-callout">
                                     <p><strong>Security &amp; Compliance:</strong> Scripts executed entirely within the
                                         local secure session, retaining zero patient data or PHI post-execution.</p>
-                                    <p style="margin-top: 0.5rem;"><strong>Why it matters:</strong> The first thing I
-                                        ever automated. A home health
-                                        nurse building Python scripts to reclaim clinical time from EMR busywork. Every
-                                        project since follows the same pattern.</p>
+                                    <p class="callout-follow"><strong>Result:</strong> This was my first automation
+                                        project. It cut documentation time from 45 minutes to 4 minutes per encounter and
+                                        gave that time back to patient care.</p>
                                 </div>
                             </div>
                             <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
@@ -501,14 +420,18 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section" style="position: relative; overflow: hidden;">
-            <div id="skills-graph" class="skills-graph-container"></div>
-            <div class="container" style="position: relative; z-index: 1;">
-                <div class="section-header animate-on-scroll">
-                    <h2>04. Skills</h2>
-                    <div class="separator"></div>
+        <section id="skills" class="section" data-camera="whole-tight">
+            <div class="container">
+                <div class="section-header pyz-rise">
+                    <p class="overline">04 · Skills</p>
+                    <h2>Clinical · Technical · Operational</h2>
                 </div>
-                <div class="skills-grid animate-on-scroll delay-1">
+                <ul class="domain-legend pyz-rise" aria-label="Domain legend">
+                    <li><span class="swatch clinical" aria-hidden="true"></span> Clinical</li>
+                    <li><span class="swatch operational" aria-hidden="true"></span> Operational</li>
+                    <li><span class="swatch technical" aria-hidden="true"></span> Technical</li>
+                </ul>
+                <div class="skills-grid pyz-rise">
 
                     <!-- Clinical & Domain -->
                     <div class="skill-category skill-category--blue clinical-domain">
@@ -535,8 +458,20 @@
                             <span class="pill pill-accent pill-green" data-skill="Python">Python</span>
                             <span class="pill pill-accent pill-green" data-skill="RAG / AI Agents">RAG / AI
                                 Agents</span>
+                            <span class="pill pill-accent pill-green" data-skill="Context Engineering">Context
+                                Engineering</span>
+                            <span class="pill pill-accent pill-green" data-skill="Agent Harnesses">Agent
+                                Harnesses</span>
+                            <span class="pill pill-accent pill-green" data-skill="Evals">Evals</span>
                             <span class="pill pill-accent pill-green" data-skill="Prompt Engineering">Prompt
                                 Engineering</span>
+                            <span class="pill pill-std pill-green" data-skill="Local Models">Local Models</span>
+                            <span class="pill pill-std pill-green" data-skill="LLM Wikis">LLM Wikis</span>
+                            <span class="pill pill-std pill-green" data-skill="Coding Agents">Coding Agents</span>
+                            <span class="pill pill-std pill-green" data-skill="MCP / Tool Use">MCP / Tool Use</span>
+                            <span class="pill pill-std pill-green" data-skill="Multi-Agent Workflows">Multi-Agent
+                                Workflows</span>
+                            <span class="pill pill-std pill-green" data-skill="Agent Memory">Agent Memory</span>
                             <span class="pill pill-std pill-green" data-skill="Flask">Flask</span>
                             <span class="pill pill-std pill-green" data-skill="PySimpleGUI">PySimpleGUI</span>
                             <span class="pill pill-std pill-green" data-skill="RPA (pyautogui, Selenium)">RPA
@@ -589,16 +524,15 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="container contact-container animate-on-scroll">
-                <h2 class="contact-title">Let's talk about where clinical meets technical.</h2>
-                <p class="contact-subtitle"
-                    style="margin-bottom: var(--space-xl); max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; font-size: 1.05rem; line-height: 1.7;">
-                    I'm pursuing utilization management, clinical operations, clinical program management, clinical
-                    informatics, and clinical implementation opportunities. I bring direct payer-operations leadership
-                    plus hands-on experience implementing privacy-conscious workflow tools.</p>
+        <section id="contact" class="section contact" data-camera="settle">
+            <div class="container contact-container pyz-rise">
+                <h2 class="contact-title">I'm looking for my next clinical operations role.</h2>
+                <p class="contact-subtitle">
+                    My target roles sit in utilization management, clinical operations, informatics, or implementation.
+                    I bring direct payer-operations leadership and a record of building privacy-conscious workflow
+                    tools for the teams I worked on.</p>
 
-                <div class="contact-links-row ">
+                <div class="contact-links-row">
                     <!-- Resume -->
                     <a href="assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer"
                         class="contact-link-item">
@@ -639,14 +573,14 @@
 
                     <span class="contact-divider" aria-hidden="true"></span>
 
-                    <!-- X (Twitter) -->
+                    <!-- X -->
                     <a href="https://x.com/jon_dev_lapaz" target="_blank" rel="noopener noreferrer"
                         class="contact-link-item">
                         <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
-                        <span>Twitter</span>
+                        <span>X</span>
                     </a>
 
                 </div>
@@ -662,7 +596,18 @@
         </div>
     </footer>
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <div class="motion-hint" id="motion-hint" hidden>
+        <div>Motion is reduced on this device. Enable full motion for smooth scrolling and the animated background.</div>
+        <button type="button" class="primary" id="motion-enable">Enable full motion</button>
+        <button type="button" id="motion-dismiss">Keep calm</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/force-graph@1.51.4/dist/force-graph.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/ambient-graph.js"></script>
     <script src="js/app.js"></script>
 </body>
 
