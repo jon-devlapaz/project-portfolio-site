@@ -345,6 +345,17 @@ html.pyz-motion-calm #ambient-graph-canvas {
     display: flex;
     margin: 0.5rem 0 0;
   }
+
+  .nav-links.active > li > a {
+    display: flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .nav-links.active .nav-socials a {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }
 
 main {
