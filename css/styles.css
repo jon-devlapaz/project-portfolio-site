@@ -442,9 +442,9 @@ main {
   );
 }
 
-@media (max-width: 640px) {
+@media (max-width: 859px) {
   .scrim::before {
-    inset: -28px -20px;
+    inset: -28px -16px;
   }
 }
 
@@ -581,6 +581,12 @@ h3 {
   margin-top: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   max-width: 40rem;
+}
+
+@media (max-width: 640px) {
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .about-stats strong {
