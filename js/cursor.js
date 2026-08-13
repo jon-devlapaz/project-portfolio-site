@@ -17,6 +17,7 @@
     if (!Motion) return;
 
     const fine = window.matchMedia("(pointer: fine)");
+    const wide = window.matchMedia("(min-width: 860px)");
     let canvas = document.getElementById("cursor-canvas");
     if (!canvas) {
       canvas = document.createElement("canvas");
@@ -75,7 +76,7 @@
     }
 
     function shouldRun() {
-      return fine.matches && Motion.getMotionMode() === "full";
+      return fine.matches && wide.matches && Motion.getMotionMode() === "full";
     }
 
     function syncActive() {
@@ -117,6 +118,26 @@
       return { mode: "default", rect: null };
     }
 
+    function refreshHit() {
+      if (!state.seen) return;
+      const under = document.elementFromPoint(state.rawX, state.rawY);
+      const hit = hitMode(under);
+      state.mode = hit.mode;
+      state.rect = hit.rect;
+
+      if (state.mode === "default" && typeof global.__ambientGraphNearest === "function") {
+        const near = global.__ambientGraphNearest(state.rawX, state.rawY);
+        if (near && near.dist < 56) {
+          state.magnetId = near.id;
+          state.magnetLabel = near.label;
+          state.magnetColor = near.color || DOMAIN[near.group] || "#868a90";
+          return;
+        }
+      }
+      state.magnetId = null;
+      state.magnetLabel = null;
+    }
+
     function onMove(e) {
       const now = performance.now();
       const dt = Math.max(8, now - lastT);
@@ -130,26 +151,7 @@
       state.rawX = e.clientX;
       state.rawY = e.clientY;
       state.seen = true;
-
-      const under = document.elementFromPoint(e.clientX, e.clientY);
-      const hit = hitMode(under);
-      state.mode = hit.mode;
-      state.rect = hit.rect;
-
-      if (state.mode === "default" && typeof global.__ambientGraphNearest === "function") {
-        const near = global.__ambientGraphNearest(e.clientX, e.clientY);
-        if (near && near.dist < 56) {
-          state.magnetId = near.id;
-          state.magnetLabel = near.label;
-          state.magnetColor = near.color || DOMAIN[near.group] || "#868a90";
-        } else {
-          state.magnetId = null;
-          state.magnetLabel = null;
-        }
-      } else {
-        state.magnetId = null;
-        state.magnetLabel = null;
-      }
+      refreshHit();
     }
 
     function roundRect(c, x, y, rw, rh, rad) {
@@ -270,6 +272,13 @@
       syncActive();
     });
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("scroll", refreshHit, { passive: true });
+    window.addEventListener("pointerleave", () => {
+      state.seen = false;
+      state.rect = null;
+      state.magnetId = null;
+      state.magnetLabel = null;
+    });
     window.addEventListener(
       "pointerdown",
       () => {
@@ -285,6 +294,7 @@
       { passive: true }
     );
     fine.addEventListener("change", syncActive);
+    wide.addEventListener("change", syncActive);
     Motion.subscribeMotion(syncActive);
   }
 

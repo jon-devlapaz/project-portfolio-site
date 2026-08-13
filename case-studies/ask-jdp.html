@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask JDP case study | Jonathan De La Paz</title>
+    <meta name="description" content="How Jonathan De La Paz built a public career assistant whose privacy rules, evidence limits, and abuse controls are enforced in code.">
+    <meta name="theme-color" content="#07080a">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <link rel="stylesheet" href="../css/styles.css?v=20260812k">
+</head>
+
+<body class="case-study">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="header">
+        <nav class="nav-container" aria-label="Case study">
+            <a href="../index.html" class="logo" aria-label="Jonathan De La Paz, home">JDP.</a>
+            <ul class="case-nav">
+                <li><a href="../index.html#work">All work</a></li>
+                <li><a href="#evidence">Evidence</a></li>
+                <li><a href="../index.html#contact" class="btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="section case-hero">
+            <div class="container">
+                <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Selected work</a>
+                <p class="overline">Case study 01 · Full-stack AI system</p>
+                <h1>Ask JDP</h1>
+                <p class="case-hero-dek">A public career assistant that answers from a reviewed corpus. Its privacy rules, evidence limits, session ownership, and abuse controls are enforced in code.</p>
+                <ul class="case-status" aria-label="Project status">
+                    <li><span>Surface</span> Public source + live app</li>
+                    <li><span>Runtime</span> React · Hono · Flue · SQLite</li>
+                    <li><span>Verified</span> CI and live recruiter path</li>
+                </ul>
+                <div class="hero-ctas">
+                    <a href="https://ask-jdp.marten-pollux.ts.net/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Try Ask JDP live</a>
+                    <a href="https://github.com/jon-devlapaz/ask-jdp" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View source</a>
+                </div>
+            </div>
+        </section>
+
+        <article class="section case-body">
+            <div class="container case-layout">
+                <div class="case-narrative">
+                    <section aria-labelledby="problem-heading">
+                        <p class="section-kicker">01</p>
+                        <h2 id="problem-heading">Problem</h2>
+                        <p>I wanted employers to ask about my work in plain language, but I did not want to hand a model raw résumés, private claim ledgers, or an open-ended pool of sources. A polished answer also had to stay within what the reviewed evidence could support.</p>
+                    </section>
+
+                    <section aria-labelledby="constraints-heading">
+                        <p class="section-kicker">02</p>
+                        <h2 id="constraints-heading">Constraints</h2>
+                        <ul class="case-bullets">
+                            <li>Only reviewed, public-safe career evidence may reach the model.</li>
+                            <li>Raw source documents, prompts, credentials, private identifiers, and prohibited details must remain undisclosed.</li>
+                            <li>Anonymous users may access only server-issued conversations owned by their signed session.</li>
+                            <li>The public endpoint needs bounded requests, rate limits, retention rules, and readiness checks without exposing provider credentials.</li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="decisions-heading">
+                        <p class="section-kicker">03</p>
+                        <h2 id="decisions-heading">My decisions</h2>
+                        <p>I kept the reviewed corpus small and server-only. The agent contract requires qualified answers and a visible source label. The HTTP layer pairs opaque conversation IDs with signed <code>HttpOnly</code>, <code>SameSite=Strict</code> sessions. It also checks the request origin, caps body size, and rate-limits each session.</p>
+                        <p>Known prompt-injection patterns are rejected before the model is called. SQLite stores conversations. On startup, cleanup deletes only settled records older than the configured cutoff and stops on schema or transaction errors.</p>
+                    </section>
+
+                    <section aria-labelledby="tradeoffs-heading">
+                        <p class="section-kicker">04</p>
+                        <h2 id="tradeoffs-heading">Difficult tradeoffs</h2>
+                        <p>I kept the system narrow on purpose. It cannot browse, ingest arbitrary résumés, or answer outside the reviewed corpus. That leaves fewer questions it can answer, but the boundary is clear to both the user and the model.</p>
+                        <p>GitHub Pages cannot run the full assistant. It needs a persistent Node process, SQLite storage, and a provider secret on the server. The static frontend is still useful for handoff and deployment packaging, but it is only the client.</p>
+                    </section>
+
+                    <section aria-labelledby="implementation-heading">
+                        <p class="section-kicker">05</p>
+                        <h2 id="implementation-heading">Implementation</h2>
+                        <p>The single-screen React client shows the evidence scope and privacy warning before someone asks a question. It labels the composer, shows the live answer state, and gives recoverable errors. A Hono API handles security headers, sessions, body limits, rate limits, injection rejection, health checks, and the Flue agent router. The agent receives only the curated corpus and its response rules.</p>
+                        <ul class="implementation-list" aria-label="Ask JDP implementation layers">
+                            <li><strong>Client</strong><span>React · accessible composer · visible provenance</span></li>
+                            <li><strong>Boundary</strong><span>Hono · CSP · same-origin · signed sessions</span></li>
+                            <li><strong>Agent</strong><span>Closed corpus · bounded claims · refusal behavior</span></li>
+                            <li><strong>State</strong><span>SQLite · ownership checks · bounded cleanup</span></li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="verification-heading">
+                        <p class="section-kicker">06</p>
+                        <h2 id="verification-heading">Verification</h2>
+                        <p>The source tests cover cross-session isolation, opaque identifiers, CSP, cross-origin and injection rejection, claim qualifiers, UI provenance, expired-record cleanup, rollback, and missing-schema failure. CI passed on the published commit. On August 12, 2026, I also opened the public app and ran a representative employer question through the full browser flow.</p>
+                        <div class="verification-callout">
+                            <strong>Claim boundary</strong>
+                            <p>The evidence does not show zero hallucinations, security certification, adoption, or recruiter conversion. I keep networked model evaluations separate from deterministic checks because they cost money and can vary between runs.</p>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="outcome-heading">
+                        <p class="section-kicker">07</p>
+                        <h2 id="outcome-heading">Outcome</h2>
+                        <p>Ask JDP is public, live, and inspectable. The privacy and evidence rules described here appear in the interface, the code, the tests, and the running application. I do not have a defensible engagement metric, so I do not claim one.</p>
+                    </section>
+
+                    <section id="evidence" aria-labelledby="evidence-heading" class="evidence-section">
+                        <p class="section-kicker">Proof</p>
+                        <h2 id="evidence-heading">Traceable evidence</h2>
+                        <ul class="evidence-links">
+                            <li><a href="https://github.com/jon-devlapaz/ask-jdp/blob/3414ab07fd23e7d1dd33efdc2bdbe91de09bd007/src/knowledge/corpus.ts#L1-L9" target="_blank" rel="noopener noreferrer"><strong>Corpus boundary</strong><span>Reviewed, server-only evidence</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/ask-jdp/blob/3414ab07fd23e7d1dd33efdc2bdbe91de09bd007/src/app.ts#L26-L105" target="_blank" rel="noopener noreferrer"><strong>HTTP controls</strong><span>CSP, no-store, same-origin, limits, readiness</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/ask-jdp/blob/3414ab07fd23e7d1dd33efdc2bdbe91de09bd007/src/security/session.ts#L4-L103" target="_blank" rel="noopener noreferrer"><strong>Session ownership</strong><span>Opaque IDs and signed cookies</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/ask-jdp/blob/3414ab07fd23e7d1dd33efdc2bdbe91de09bd007/tests/backend-security.test.ts#L15-L143" target="_blank" rel="noopener noreferrer"><strong>Backend tests</strong><span>Isolation, CSP, origins, injection, qualifiers</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/ask-jdp/actions/runs/31541850960" target="_blank" rel="noopener noreferrer"><strong>Published CI run</strong><span>Successful at commit 3414ab0</span></a></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <aside class="case-aside" aria-label="Case study summary">
+                    <div class="aside-block">
+                        <p class="eyebrow">Role</p>
+                        <p>I defined the product, designed the architecture and security boundaries, implemented the application, wrote the evaluations, and integrated the deployment.</p>
+                    </div>
+                    <div class="aside-block">
+                        <p class="eyebrow">Stack</p>
+                        <p>TypeScript, React, Hono, Flue, SQLite, Vitest</p>
+                    </div>
+                    <div class="aside-block">
+                        <p class="eyebrow">Source state</p>
+                        <p>Public repository; CI-green published commit</p>
+                    </div>
+                </aside>
+            </div>
+        </article>
+
+        <section class="case-next">
+            <div class="container">
+                <p class="overline">Next case study</p>
+                <a href="tink.html" class="next-case-link"><span>Tink</span><span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row"><p>&copy; 2026 Jonathan De La Paz</p><p><a href="../index.html#contact">Contact</a></p></div>
+    </footer>
+    <script defer src="../js/cursor.js?v=20260812e"></script>
+    <script defer src="../js/app.js?v=20260812h"></script>
+</body>
+
+</html>

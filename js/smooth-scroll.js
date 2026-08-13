@@ -31,7 +31,10 @@
       if (!href || href === "#") return;
       const el = document.querySelector(href);
       if (!el) return;
+      // Preserve native fragment focus for the skip link.
+      if (a.classList.contains("skip-link")) return;
       e.preventDefault();
+      history.pushState(null, "", href);
       lenis.scrollTo(el, { offset: -80 });
     }
 
@@ -54,7 +57,6 @@
     function restart() {
       document.removeEventListener("click", onClick);
       start();
-      if (lenis) document.addEventListener("click", onClick);
     }
 
     start();

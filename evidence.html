@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio evidence | Jonathan De La Paz</title>
+    <meta name="description" content="Why these case studies were selected and the public evidence behind them.">
+    <meta name="theme-color" content="#07080a">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <link rel="stylesheet" href="css/styles.css?v=20260812k">
+</head>
+
+<body class="case-study">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="header">
+        <nav class="nav-container" aria-label="Evidence page">
+            <a href="index.html" class="logo" aria-label="Jonathan De La Paz, home">JDP.</a>
+            <ul class="case-nav">
+                <li><a href="index.html#work">Selected work</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="section case-hero evidence-hero">
+            <div class="container">
+                <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Portfolio</a>
+                <p class="overline">Claim ledger · Reviewed August 12, 2026</p>
+                <h1>The evidence behind these claims</h1>
+                <p class="case-hero-dek">Every material claim in the three case studies links to source, tests, a pinned commit, public CI, a release, or a dated live check.</p>
+            </div>
+        </section>
+
+        <article class="section case-body">
+            <div class="container evidence-page">
+                <section aria-labelledby="selection-heading">
+                    <p class="section-kicker">Selection</p>
+                    <h2 id="selection-heading">Why these three</h2>
+                    <p>I compared the repositories for employer relevance, implementation depth, completeness, and the strength of their public proof. The selection does not rely on adoption, revenue, or productivity figures.</p>
+                    <section class="selection-table" aria-label="Case study selection rationale" tabindex="0">
+                        <table>
+                            <thead><tr><th scope="col">Candidate</th><th scope="col">Decision</th><th scope="col">Evidence-based rationale</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">Ask JDP</th><td><span class="decision selected">Selected</span></td><td>This is a public full-stack AI system. Its live interface, tests, security boundary, and CI are inspectable.</td></tr>
+                                <tr><th scope="row">Tink</th><td><span class="decision selected">Selected</span></td><td>This released Rust tool has a public acceptance contract, filesystem refusals, CI, and release artifacts.</td></tr>
+                                <tr><th scope="row">Tink Skills</th><td><span class="decision selected">Selected</span></td><td>This agent-evaluation package has integrity checks, four adapters, tests, and passed CI on published main.</td></tr>
+                                <tr><th scope="row">Socratink</th><td><span class="decision">Not selected</span></td><td>The repository says it is not production. Its current evidence is a no-write harness slice and a bounded experiment, not learner outcomes.</td></tr>
+                                <tr><th scope="row">Legacy clinical automations</th><td><span class="decision">Not selected</span></td><td>The older portfolio described internal outcomes, but the implementation and production artifacts are not public enough to support an engineering case study.</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+
+                <section aria-labelledby="ledger-heading">
+                    <p class="section-kicker">Ledger</p>
+                    <h2 id="ledger-heading">What supports each case study</h2>
+                    <div class="ledger-grid">
+                        <article>
+                            <h3>Ask JDP</h3>
+                            <p>The case study says that the corpus stays server-only, sessions have ownership checks, and the HTTP layer rejects unsafe requests. It also covers cleanup tests, the public interface, and passed CI.</p>
+                            <p><strong>Proof:</strong> pinned source and tests at <code>3414ab0</code>, <a href="https://github.com/jon-devlapaz/ask-jdp/actions/runs/31541850960" target="_blank" rel="noopener noreferrer">CI run 31541850960</a>, and browser verification on August 12, 2026.</p>
+                            <a href="case-studies/ask-jdp.html#evidence" class="text-link">Open exact evidence links →</a>
+                        </article>
+                        <article>
+                            <h3>Tink</h3>
+                            <p>The case study covers project-owned live state, immutable source receipts, tree digests, and refusals for symlinks or drift. It also describes acceptance traceability, bounded subprocesses, verified updates, and four release targets.</p>
+                            <p><strong>Proof:</strong> pinned source and tests at <code>2b082b5</code>, <a href="https://github.com/jon-devlapaz/tink/actions/runs/31654152235" target="_blank" rel="noopener noreferrer">CI run 31654152235</a>, and the <a href="https://github.com/jon-devlapaz/tink/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">public v1.0.0 release</a>.</p>
+                            <a href="case-studies/tink.html#evidence" class="text-link">Open exact evidence links →</a>
+                        </article>
+                        <article>
+                            <h3>Tink Skills evaluation loop</h3>
+                            <p>The case study describes paired trials with alternating order, exact model identity, and four harness adapters. It also covers grader validation, runtime attestation, artifact rehashing, and the limits on each conclusion.</p>
+                            <p><strong>Proof:</strong> published-main source and tests at <code>0ed4946</code> and <a href="https://github.com/jon-devlapaz/tink-skills/actions/runs/31457035439" target="_blank" rel="noopener noreferrer">validation run 31457035439</a>.</p>
+                            <a href="case-studies/skill-eval-loop.html#evidence" class="text-link">Open exact evidence links →</a>
+                        </article>
+                    </div>
+                </section>
+
+                <section aria-labelledby="background-evidence-heading">
+                    <p class="section-kicker">Background boundary</p>
+                    <h2 id="background-evidence-heading">Where the career facts come from</h2>
+                    <p>Roles, dates, operating scope, and education come from the <a href="https://github.com/jon-devlapaz/project-portfolio-site/blob/97089cb/assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer">linked public résumé</a> and the <a href="https://github.com/jon-devlapaz/ask-jdp/blob/3414ab07fd23e7d1dd33efdc2bdbe91de09bd007/src/knowledge/corpus.ts#L13-L34" target="_blank" rel="noopener noreferrer">reviewed Ask JDP corpus</a>. They are self-reported career records, not independently audited impact evidence. The portfolio identifies me as a registered nurse and makes no claim about current license status.</p>
+                </section>
+
+                <section aria-labelledby="limits-heading">
+                    <p class="section-kicker">Limits</p>
+                    <h2 id="limits-heading">Limits of this evidence</h2>
+                    <ul class="case-bullets">
+                        <li>This portfolio does not report user counts, adoption, revenue, conversion, uptime, productivity, or causal impact.</li>
+                        <li>It does not describe Ask JDP as hallucination-free, HIPAA-certified, or security-certified.</li>
+                        <li>It does not describe Tink as transactionally atomic, concurrency-safe, Windows-compatible, or compatible with private GitHub repositories.</li>
+                        <li>It does not claim that the evaluation loop makes a skill universally better or proves statistical significance.</li>
+                        <li>It does not present Socratink as a deployed learning platform or as evidence of learner outcomes.</li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row"><p>&copy; 2026 Jonathan De La Paz</p><p><a href="index.html#work">Selected work</a></p></div>
+    </footer>
+    <script defer src="js/cursor.js?v=20260812e"></script>
+    <script defer src="js/app.js?v=20260812h"></script>
+</body>
+
+</html>

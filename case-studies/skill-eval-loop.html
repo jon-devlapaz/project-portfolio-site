@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill eval loop case study | Jonathan De La Paz</title>
+    <meta name="description" content="How Jonathan De La Paz built a paired agent-skill evaluation system that checks the conditions behind a result.">
+    <meta name="theme-color" content="#07080a">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <link rel="stylesheet" href="../css/styles.css?v=20260812k">
+</head>
+
+<body class="case-study">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="header">
+        <nav class="nav-container" aria-label="Case study">
+            <a href="../index.html" class="logo" aria-label="Jonathan De La Paz, home">JDP.</a>
+            <ul class="case-nav">
+                <li><a href="../index.html#work">All work</a></li>
+                <li><a href="#evidence">Evidence</a></li>
+                <li><a href="../index.html#contact" class="btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="section case-hero">
+            <div class="container">
+                <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Selected work</a>
+                <p class="overline">Case study 03 · Agent evaluation infrastructure</p>
+                <h1>Tink Skills evaluation loop</h1>
+                <p class="case-hero-dek">A paired test that compares a task with and without a skill. Before it reports a difference, it checks model identity, treatment exposure, control isolation, grading, and the saved artifacts.</p>
+                <ul class="case-status" aria-label="Project status">
+                    <li><span>Library</span> Three public skill packages</li>
+                    <li><span>Harnesses</span> Hermes · Claude Code · Codex · Pi</li>
+                    <li><span>Verified</span> Published-main CI</li>
+                </ul>
+                <div class="hero-ctas">
+                    <a href="https://github.com/jon-devlapaz/tink-skills/tree/main/skills/skill-eval-loop" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Inspect skill-eval-loop</a>
+                    <a href="https://github.com/jon-devlapaz/tink-skills" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View library</a>
+                </div>
+            </div>
+        </section>
+
+        <article class="section case-body">
+            <div class="container case-layout">
+                <div class="case-narrative">
+                    <section aria-labelledby="problem-heading">
+                        <p class="section-kicker">01</p>
+                        <h2 id="problem-heading">Problem</h2>
+                        <p>An agent-skill evaluation can show a difference for the wrong reason. The model alias can drift. The control can see the skill, or the treatment can miss it. A grader can accept a known-wrong answer. Copied artifacts can stop matching the run.</p>
+                    </section>
+
+                    <section aria-labelledby="constraints-heading">
+                        <p class="section-kicker">02</p>
+                        <h2 id="constraints-heading">Constraints</h2>
+                        <ul class="case-bullets">
+                            <li>Task, fixtures, model, tools, harness, and trial count stay fixed while skill availability changes.</li>
+                            <li>Exact model identifiers are required; aliases are not silently inferred.</li>
+                            <li>References must pass every declared grader, and declared wrong answers must fail those same graders.</li>
+                            <li>Paid trials require an explicit invocation budget; provider call count and cost remain unknown unless the harness reports them.</li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="decisions-heading">
+                        <p class="section-kicker">03</p>
+                        <h2 id="decisions-heading">My decisions</h2>
+                        <p>I designed a paired runner that alternates treatment and control order. For each condition, it records the response, trace, runtime attestation, grading result, and SHA-256. Harness adapters isolate skill payloads and reject symlinked entries.</p>
+                        <p>The aggregator does not trust summary booleans from a copied manifest. It resolves the allowed artifact paths and rehashes them. The report keeps mechanism validity, runtime attestation, routing, task success, usage coverage, and cost coverage separate.</p>
+                    </section>
+
+                    <section aria-labelledby="tradeoffs-heading">
+                        <p class="section-kicker">04</p>
+                        <h2 id="tradeoffs-heading">Difficult tradeoffs</h2>
+                        <p>I built four harness adapters so the system could run across different agent environments. Their enforcement and trace visibility differ, so the report names the limits of each harness instead of implying uniform isolation.</p>
+                        <p>Alternating order reduces order bias, but it cannot eliminate temporal drift. A local paired result is not statistical significance, causal proof, distribution readiness, security approval, or evidence that a skill wins everywhere.</p>
+                    </section>
+
+                    <section aria-labelledby="implementation-heading">
+                        <p class="section-kicker">05</p>
+                        <h2 id="implementation-heading">Implementation</h2>
+                        <p>The system includes a suite auditor, model recommender, paired runner, four runtime adapters, attestation parser, and fail-closed aggregator. It supports deterministic graders and model rubrics. Before a paid trial, it validates both correct and counter-reference answers and freezes the target. The artifacts remain addressable so the result can be checked again later.</p>
+                        <ul class="implementation-list" aria-label="Evaluation system layers">
+                            <li><strong>Plan</strong><span>Exact model · harness · cases · invocation budget</span></li>
+                            <li><strong>Run</strong><span>Paired conditions · counterbalanced order · isolated payloads</span></li>
+                            <li><strong>Attest</strong><span>Model identity · treatment exposure · control isolation</span></li>
+                            <li><strong>Aggregate</strong><span>Rehashed artifacts · layered verdicts · coverage limits</span></li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="verification-heading">
+                        <p class="section-kicker">06</p>
+                        <h2 id="verification-heading">Verification</h2>
+                        <p>Tests cover model-alias rejection, target and judge attestation failures, payload symlinks, control and output isolation for each harness, interruption handling, alternating order, artifact drift, control exposure, and invalid grading summaries. The published main commit passed the validation workflow, including the evaluator health check, Python lint, package inventory, and link checks.</p>
+                        <div class="verification-callout">
+                            <strong>Claim boundary</strong>
+                            <p>I do not use a benchmark result here to claim that a skill improves outcomes. This case study shows the evaluation mechanism and how it fails. It does not show universal skill efficacy.</p>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="outcome-heading">
+                        <p class="section-kicker">07</p>
+                        <h2 id="outcome-heading">Outcome</h2>
+                        <p>The public Tink Skills repository includes three installable packages, one of them this evaluation loop. It breaks a skill comparison into checks that can be rerun, and it narrows the conclusion when the run does not prove the mechanism.</p>
+                    </section>
+
+                    <section id="evidence" aria-labelledby="evidence-heading" class="evidence-section">
+                        <p class="section-kicker">Proof</p>
+                        <h2 id="evidence-heading">Traceable evidence</h2>
+                        <ul class="evidence-links">
+                            <li><a href="https://github.com/jon-devlapaz/tink-skills/blob/0ed494674634a0931f63c04437126fd0a2390f2a/skills/skill-eval-loop/SKILL.md#L1-L42" target="_blank" rel="noopener noreferrer"><strong>Evaluation contract</strong><span>Paired design, prerequisites, and invocation accounting</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink-skills/blob/0ed494674634a0931f63c04437126fd0a2390f2a/skills/skill-eval-loop/scripts/run_skill_eval.py#L152-L214" target="_blank" rel="noopener noreferrer"><strong>Grader validation</strong><span>References pass; wrong answers must fail</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink-skills/blob/0ed494674634a0931f63c04437126fd0a2390f2a/skills/skill-eval-loop/scripts/runtime_adapters.py#L21-L176" target="_blank" rel="noopener noreferrer"><strong>Harness adapters</strong><span>Hermes, Claude Code, Codex, and Pi</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink-skills/blob/0ed494674634a0931f63c04437126fd0a2390f2a/skills/skill-eval-loop/references/interpret-benchmark.md#L35-L45" target="_blank" rel="noopener noreferrer"><strong>Claim limits</strong><span>Unproven causal, statistical, and distribution claims</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink-skills/actions/runs/31457035439" target="_blank" rel="noopener noreferrer"><strong>Published-main CI</strong><span>Successful at commit 0ed4946</span></a></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <aside class="case-aside" aria-label="Case study summary">
+                    <div class="aside-block"><p class="eyebrow">Role</p><p>I designed the protocol and integrity model, implemented the runner and adapters, and wrote the tests and documentation.</p></div>
+                    <div class="aside-block"><p class="eyebrow">Stack</p><p>Python, JSON, Codex, Claude Code, Hermes, Pi, GitHub Actions</p></div>
+                    <div class="aside-block"><p class="eyebrow">Evidence level</p><p>Evaluation mechanism verified; no efficacy claim made</p></div>
+                </aside>
+            </div>
+        </article>
+
+        <section class="case-next">
+            <div class="container">
+                <p class="overline">Return to</p>
+                <a href="../index.html#work" class="next-case-link"><span>All selected work</span><span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row"><p>&copy; 2026 Jonathan De La Paz</p><p><a href="../index.html#contact">Contact</a></p></div>
+    </footer>
+    <script defer src="../js/cursor.js?v=20260812e"></script>
+    <script defer src="../js/app.js?v=20260812h"></script>
+</body>
+
+</html>

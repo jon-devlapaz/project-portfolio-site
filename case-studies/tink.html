@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tink case study | Jonathan De La Paz</title>
+    <meta name="description" content="How Jonathan De La Paz built and released a Rust CLI for project-owned agent skills with explicit filesystem checks.">
+    <meta name="theme-color" content="#07080a">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <link rel="stylesheet" href="../css/styles.css?v=20260812k">
+</head>
+
+<body class="case-study">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="header">
+        <nav class="nav-container" aria-label="Case study">
+            <a href="../index.html" class="logo" aria-label="Jonathan De La Paz, home">JDP.</a>
+            <ul class="case-nav">
+                <li><a href="../index.html#work">All work</a></li>
+                <li><a href="#evidence">Evidence</a></li>
+                <li><a href="../index.html#contact" class="btn-primary">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="section case-hero">
+            <div class="container">
+                <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Selected work</a>
+                <p class="overline">Case study 02 · Rust systems tooling</p>
+                <h1>Tink</h1>
+                <p class="case-hero-dek">A Rust CLI that installs and verifies agent skills inside a project. It pins sources, hashes complete trees with file modes, and stops when the filesystem state is unsafe.</p>
+                <ul class="case-status" aria-label="Project status">
+                    <li><span>Release</span> v1.0.0</li>
+                    <li><span>Targets</span> macOS + Linux · x86_64 + arm64</li>
+                    <li><span>Verified</span> CI + release workflow</li>
+                </ul>
+                <div class="hero-ctas">
+                    <a href="https://github.com/jon-devlapaz/tink/releases/tag/v1.0.0" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View v1.0.0 release</a>
+                    <a href="https://github.com/jon-devlapaz/tink" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View source</a>
+                </div>
+            </div>
+        </section>
+
+        <article class="section case-body">
+            <div class="container case-layout">
+                <div class="case-narrative">
+                    <section aria-labelledby="problem-heading">
+                        <p class="section-kicker">01</p>
+                        <h2 id="problem-heading">Problem</h2>
+                        <p>Reusable agent skills become risky when they rely on hidden global state or when a refresh can overwrite project-owned work. I wanted a clear lifecycle for discovering, importing, locking, syncing, and verifying complete skill trees.</p>
+                    </section>
+
+                    <section aria-labelledby="constraints-heading">
+                        <p class="section-kicker">02</p>
+                        <h2 id="constraints-heading">Constraints</h2>
+                        <ul class="case-bullets">
+                            <li>At runtime, Tink discovers skills only in <code>&lt;project&gt;/.agents/skills</code>. The home library is offline inventory.</li>
+                            <li>Imported trees must reject symlinks and special files, preserve safe executable modes, and detect content or mode drift.</li>
+                            <li>Project state, library state, catalogs, source receipts, skillset receipts, and lockfiles have different owners.</li>
+                            <li>The CLI manages skill artifacts; it does not execute skill code.</li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="decisions-heading">
+                        <p class="section-kicker">03</p>
+                        <h2 id="decisions-heading">My decisions</h2>
+                        <p>I made project-local state canonical. For GitHub sources, Tink records the full revision and repository-relative path. Lock, sync, and verify use those receipts and tree digests. Receipt classification is a trust boundary: a skillset-owned root cannot be published as an unrelated standalone skill.</p>
+                        <p>The filesystem collector normalizes allowed modes, includes paths and modes in the v2 digest, and rejects symlinked or unsupported entries. Self-update verifies both the release digest and the payload's reported version before replacing the executable.</p>
+                    </section>
+
+                    <section aria-labelledby="tradeoffs-heading">
+                        <p class="section-kicker">04</p>
+                        <h2 id="tradeoffs-heading">Difficult tradeoffs</h2>
+                        <p>For sync, Tink checks every locked skill before publication. It then changes state sequentially so a failed step can be retried. Those changes are not one transaction across the project, library, catalog, receipt, and manifest. Concurrent writers are outside the safety guarantee.</p>
+                        <p>v1 supports macOS and Linux on x86_64 and arm64. It does not promise Windows support, private GitHub authentication, or cross-filesystem rollback.</p>
+                    </section>
+
+                    <section aria-labelledby="implementation-heading">
+                        <p class="section-kicker">05</p>
+                        <h2 id="implementation-heading">Implementation</h2>
+                        <p>The Rust CLI keeps source resolution, tree handling, project publication, manifests, subprocess supervision, and self-update in separate modules. <code>add</code> protects the project target before repairing derived library state. <code>sync</code> checks every locked skill before publishing any of them. Subprocesses run in process groups with cancellation, output limits, and cleanup.</p>
+                        <ul class="implementation-list" aria-label="Tink implementation layers">
+                            <li><strong>Ownership</strong><span>Project root · home inventory · catalog · receipts</span></li>
+                            <li><strong>Identity</strong><span>Immutable revisions · relative paths · v2 tree digests</span></li>
+                            <li><strong>Safety</strong><span>Symlink refusal · drift refusal · bounded subprocesses</span></li>
+                            <li><strong>Lifecycle</strong><span>Add · lock · sync · verify · update</span></li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="verification-heading">
+                        <p class="section-kicker">06</p>
+                        <h2 id="verification-heading">Verification</h2>
+                        <p>A public acceptance contract gives each requirement a stable identifier. Executable tests cover overwrite refusal, explicit skillset membership, bad-hash preflight, updates, cancellation, and other lifecycle boundaries. A traceability test catches missing or duplicate sensors.</p>
+                        <p>CI checks formatting, compilation, Clippy, documentation, native tests, and release builds. The v1.0.0 commit passed CI and the four-target release workflow, which verified the expected archives and SHA-256 digests before publication.</p>
+                        <div class="verification-callout">
+                            <strong>Claim boundary</strong>
+                            <p>The release does not establish adoption, a reliability percentage, a general performance SLA, Windows support, private-repository support, concurrent mutation safety, or whole-operation atomicity.</p>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="outcome-heading">
+                        <p class="section-kicker">07</p>
+                        <h2 id="outcome-heading">Outcome</h2>
+                        <p>Tink v1.0.0 is publicly released at commit <code>2b082b5</code>. It supports project-local discovery, reproducible imports, lock, sync, and verify workflows, unsafe-tree refusals, and verified binary replacement.</p>
+                    </section>
+
+                    <section id="evidence" aria-labelledby="evidence-heading" class="evidence-section">
+                        <p class="section-kicker">Proof</p>
+                        <h2 id="evidence-heading">Traceable evidence</h2>
+                        <ul class="evidence-links">
+                            <li><a href="https://github.com/jon-devlapaz/tink/blob/2b082b5032b6f6cef6ea301868c499a93b86552f/docs/ARCHITECTURE.md#L58-L107" target="_blank" rel="noopener noreferrer"><strong>State ownership</strong><span>Architecture invariants and authority boundaries</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink/blob/2b082b5032b6f6cef6ea301868c499a93b86552f/src/skills.rs#L243-L517" target="_blank" rel="noopener noreferrer"><strong>Tree safety</strong><span>Collection, copying, modes, and v2 digests</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink/blob/2b082b5032b6f6cef6ea301868c499a93b86552f/tests/acceptance_traceability.rs#L35-L94" target="_blank" rel="noopener noreferrer"><strong>Acceptance traceability</strong><span>Missing and duplicate sensor detection</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink/actions/runs/31654152235" target="_blank" rel="noopener noreferrer"><strong>CI run</strong><span>Successful at release commit 2b082b5</span></a></li>
+                            <li><a href="https://github.com/jon-devlapaz/tink/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer"><strong>v1.0.0 release</strong><span>Four platform archives and checksums</span></a></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <aside class="case-aside" aria-label="Case study summary">
+                    <div class="aside-block"><p class="eyebrow">Role</p><p>I defined the product contract and architecture, wrote the Rust implementation and acceptance tests, and prepared the release.</p></div>
+                    <div class="aside-block"><p class="eyebrow">Stack</p><p>Rust, Git, GitHub Actions, SHA-256, native process supervision</p></div>
+                    <div class="aside-block"><p class="eyebrow">Release</p><p>v1.0.0 · public · CI and release workflows passed</p></div>
+                </aside>
+            </div>
+        </article>
+
+        <section class="case-next">
+            <div class="container">
+                <p class="overline">Next case study</p>
+                <a href="skill-eval-loop.html" class="next-case-link"><span>Tink Skills evaluation loop</span><span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row"><p>&copy; 2026 Jonathan De La Paz</p><p><a href="../index.html#contact">Contact</a></p></div>
+    </footer>
+    <script defer src="../js/cursor.js?v=20260812e"></script>
+    <script defer src="../js/app.js?v=20260812h"></script>
+</body>
+
+</html>

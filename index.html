@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonathan De La Paz - Utilization Management &amp; Clinical Operations</title>
+    <title>Jonathan De La Paz | Software Engineering &amp; Agent Systems</title>
     <meta name="description"
-        content="Portfolio of Jonathan De La Paz, an RN and utilization-management leader who improves healthcare operations with privacy-conscious automation.">
-
+        content="Engineering portfolio of Jonathan De La Paz, with public AI systems, developer tools, agent evaluations, and links to the proof behind each claim.">
     <meta name="theme-color" content="#07080a">
+    <meta property="og:title" content="Jonathan De La Paz | Software Engineering &amp; Agent Systems">
+    <meta property="og:description"
+        content="Public AI systems, developer tools, and agent evaluations, with the source, tests, and releases linked.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jon-devlapaz.github.io/project-portfolio-site/">
     <script>
+      document.documentElement.classList.replace("no-js", "js");
       try {
         if (localStorage.getItem("pyz-motion") === "full") {
           document.documentElement.classList.add("pyz-motion-full");
         }
       } catch (e) {}
     </script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260812k">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.css">
 </head>
 
@@ -29,587 +34,242 @@
 
     <header class="header">
         <nav class="nav-container" aria-label="Primary">
-            <a href="#home" class="logo">JDP.</a>
-            <button class="mobile-menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-                <span class="hamburger"></span>
+            <a href="#home" class="logo" aria-label="Jonathan De La Paz, home">JDP.</a>
+            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+                <span class="hamburger" aria-hidden="true"></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
+            <ul class="nav-links" id="primary-nav">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#background">Background</a></li>
                 <li><a href="assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://ask-jdp.marten-pollux.ts.net/" class="btn-primary" data-cursor="cta" target="_blank" rel="noopener noreferrer">Ask JDP</a></li>
-                <li class="nav-socials">
-                    <a href="https://www.linkedin.com/in/jonathan-delapaz/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://x.com/jon_dev_lapaz" target="_blank" rel="noopener noreferrer" aria-label="X">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                </li>
             </ul>
         </nav>
     </header>
 
-    <main id="main-content">
-        <!-- Home / Hero Section -->
+    <main id="main-content" tabindex="-1">
         <section id="home" class="hero section" data-camera="hero">
             <div class="container">
-                <div class="scrim">
-                    <p class="overline pyz-rise" style="--rise-delay: 0.1s">Utilization Management &amp; Clinical Operations</p>
-                    <h1 class="hero-title" data-word-rise data-cursor="text">Clinical operations leadership backed by <span class="brand-clip">hands-on automation</span>.</h1>
-                    <p class="hero-subtitle pyz-rise" style="--rise-delay: 0.42s" data-cursor="text">I'm an RN who has led Medicaid prior authorization operations and built
-                        privacy-conscious tools for policy search, staffing, and repetitive clinical work.</p>
-                    <div class="hero-ctas pyz-rise" style="--rise-delay: 0.52s">
-                        <a href="#projects" class="btn btn-primary" data-cursor="cta">View Projects</a>
-                        <a href="https://ask-jdp.marten-pollux.ts.net/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Ask JDP</a>
+                <div class="scrim hero-copy">
+                    <p class="overline pyz-rise" style="--rise-delay: 0.08s">Software engineering · Agent systems · Clinical operations</p>
+                    <h1 class="hero-title" data-word-rise data-cursor="text">I build software you can <span class="brand-clip">inspect and verify</span>.</h1>
+                    <p class="hero-subtitle pyz-rise" style="--rise-delay: 0.4s" data-cursor="text">I'm Jonathan De La Paz, a software builder and RN. My work includes a public AI assistant, a Rust CLI for agent skills, and tooling for testing whether an agent skill actually ran.</p>
+                    <div class="hero-ctas pyz-rise" style="--rise-delay: 0.5s">
+                        <a href="#work" class="btn btn-primary" data-cursor="cta">Explore selected work</a>
+                        <a href="https://ask-jdp.marten-pollux.ts.net/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Try Ask JDP live</a>
                     </div>
+                    <ul class="hero-proof pyz-rise" style="--rise-delay: 0.58s" aria-label="Portfolio proof points">
+                        <li><span>Source</span> public repositories</li>
+                        <li><span>Checks</span> tests, CI, and releases</li>
+                        <li><span>Limits</span> stated alongside the proof</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section" data-camera="clinical-ops">
+        <section id="work" class="section" data-camera="bridge">
             <div class="container">
                 <div class="scrim scrim-wide">
                     <div class="section-header pyz-rise">
-                        <p class="overline">01 · About</p>
-                        <h2>The short version</h2>
+                        <p class="overline">01 · Selected work</p>
+                        <h2>Three systems, with the proof attached</h2>
+                        <p class="section-intro">These are the projects that best show how I work. You can read the code, inspect the tests, and check the released behavior yourself.</p>
                     </div>
-                    <div class="about-content pyz-rise">
-                        <div class="about-grid">
-                            <div class="about-text-column">
-                                <p>I've worked the same problems from four seats: bedside RN, prior authorization
-                                    clinician, supervisor, and builder.</p>
-                                <p>I led a 45+ person operation delivering 15,000+ Medicaid authorization decisions each
-                                    month. I also built tools that shortened policy searches, simplified staffing, and
-                                    removed repetitive data entry without sending PHI to external services.</p>
-                                <p>That path keeps the work grounded. I know how a policy reads, how a clinician applies
-                                    it under time pressure, and what a supervisor needs to keep the operation moving. When
-                                    software can remove the busywork safely, I build it.</p>
-                                <p>I took a hiatus and used it on agent systems. Harnesses, context engineering, local
-                                    models, evals, knowledge wikis. I wanted the messy parts of how they behave before I
-                                    put any of that next to clinical work.</p>
-                            </div>
+                </div>
 
-                            <div class="about-stats" aria-label="Highlights">
-                                <div><strong>5x</strong><span>PA processing throughput</span></div>
-                                <div><strong>15–20 min</strong><span>Daily planning saved per supervisor</span></div>
-                                <div><strong>1,800+ pages</strong><span>Indexed by RAG agent</span></div>
+                <div class="case-grid">
+                    <article class="case-card pyz-rise" data-case-study="ask-jdp">
+                        <div class="case-card-topline">
+                            <span class="case-number">01</span>
+                            <span class="project-category">Full-stack AI system</span>
+                        </div>
+                        <h3 class="case-card-title">Ask JDP</h3>
+                        <p class="case-card-dek">A public career assistant that answers from a reviewed, server-only corpus. Its privacy rules, session ownership, retention, and abuse controls live in the code.</p>
+                        <dl class="case-summary">
+                            <div>
+                                <dt>Problem</dt>
+                                <dd>Give employers a useful way to ask about my work without exposing raw source documents or letting the model stretch the facts.</dd>
                             </div>
+                            <div>
+                                <dt>Decision</dt>
+                                <dd>Keep the corpus deliberately small, then enforce privacy and claim limits in both the HTTP layer and the agent contract.</dd>
+                            </div>
+                            <div>
+                                <dt>Tradeoff</dt>
+                                <dd>The useful version needs a persistent Node service. A static page can show the interface, but it cannot run the assistant.</dd>
+                            </div>
+                        </dl>
+                        <ul class="proof-list" aria-label="Ask JDP evidence summary">
+                            <li>Public source</li>
+                            <li>Live interface</li>
+                            <li>CI verified</li>
+                        </ul>
+                        <div class="case-actions">
+                            <a href="case-studies/ask-jdp.html" class="btn btn-primary case-study-link">Read case study</a>
+                            <a href="https://ask-jdp.marten-pollux.ts.net/" class="text-link" target="_blank" rel="noopener noreferrer">Try live <span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/jon-devlapaz/ask-jdp" class="text-link" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
                         </div>
+                    </article>
 
-                        <div class="about-traits-row">
-                            <span class="badge">Registered Nurse</span>
-                            <span class="badge">PA Operations</span>
-                            <span class="badge">Workflow Automation</span>
+                    <article class="case-card pyz-rise" data-case-study="tink">
+                        <div class="case-card-topline">
+                            <span class="case-number">02</span>
+                            <span class="project-category">Rust systems tooling</span>
                         </div>
-                    </div>
+                        <h3 class="case-card-title">Tink</h3>
+                        <p class="case-card-dek">A Rust CLI that installs and verifies agent skills inside a project. It records exactly where a skill came from and refuses unsafe or unexpected file trees.</p>
+                        <dl class="case-summary">
+                            <div>
+                                <dt>Problem</dt>
+                                <dd>Reusable agent skills can drift into hidden global state or overwrite project-owned work.</dd>
+                            </div>
+                            <div>
+                                <dt>Decision</dt>
+                                <dd>Give each kind of state a clear owner, pin the exact source revision, and stop before publishing an unsafe or changed tree.</dd>
+                            </div>
+                            <div>
+                                <dt>Tradeoff</dt>
+                                <dd>Operations are checked up front and can be retried, but Tink does not promise one transaction across every state owner or safety with concurrent writers.</dd>
+                            </div>
+                        </dl>
+                        <ul class="proof-list" aria-label="Tink evidence summary">
+                            <li>v1.0.0 release</li>
+                            <li>Acceptance contract</li>
+                            <li>Four-target release CI</li>
+                        </ul>
+                        <div class="case-actions">
+                            <a href="case-studies/tink.html" class="btn btn-primary case-study-link">Read case study</a>
+                            <a href="https://github.com/jon-devlapaz/tink/releases/tag/v1.0.0" class="text-link" target="_blank" rel="noopener noreferrer">Release <span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/jon-devlapaz/tink" class="text-link" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+
+                    <article class="case-card pyz-rise" data-case-study="skill-eval-loop">
+                        <div class="case-card-topline">
+                            <span class="case-number">03</span>
+                            <span class="project-category">Agent evaluation infrastructure</span>
+                        </div>
+                        <h3 class="case-card-title">Tink Skills evaluation loop</h3>
+                        <p class="case-card-dek">A paired test that compares an agent with and without a skill, then checks whether the right model ran, the treatment saw the skill, and the saved artifacts still match the run.</p>
+                        <dl class="case-summary">
+                            <div>
+                                <dt>Problem</dt>
+                                <dd>A better answer does not prove that the skill caused the difference. It does not even prove that the skill ran.</dd>
+                            </div>
+                            <div>
+                                <dt>Decision</dt>
+                                <dd>Pin the harness and model, isolate the two conditions, alternate their order, record runtime exposure, and rehash the saved artifacts.</dd>
+                            </div>
+                            <div>
+                                <dt>Tradeoff</dt>
+                                <dd>When the evidence is incomplete, the report says less. It never treats one paired test as proof that a skill works everywhere.</dd>
+                            </div>
+                        </dl>
+                        <ul class="proof-list" aria-label="Tink Skills evidence summary">
+                            <li>Four harness adapters</li>
+                            <li>Paired diagnostics</li>
+                            <li>Green published-main CI</li>
+                        </ul>
+                        <div class="case-actions">
+                            <a href="case-studies/skill-eval-loop.html" class="btn btn-primary case-study-link">Read case study</a>
+                            <a href="https://github.com/jon-devlapaz/tink-skills/tree/main/skills/skill-eval-loop" class="text-link" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section" data-camera="clinical-ops">
+        <section id="approach" class="section" data-camera="whole-tight">
             <div class="container">
                 <div class="section-header pyz-rise">
-                    <p class="overline">02 · Experience</p>
-                    <h2>From bedside care to payer operations</h2>
+                    <p class="overline">02 · Engineering approach</p>
+                    <h2>How I make the work checkable</h2>
+                    <p class="section-intro">Different projects need different tools. My approach stays consistent: define the boundary, make failure visible, and keep the evidence close to the claim.</p>
                 </div>
-                <ol class="role-list pyz-rise">
-                    <li class="role-item" id="role-pa-supervisor">
-                        <div class="role-content">
-                            <span class="eyebrow">March 2025 &mdash; March 2026</span>
-                            <h3 class="role-title">Prior Authorization Supervisor</h3>
-                            <p class="role-company">TMHP / Accenture</p>
-                            <div class="role-body">
-                                <p>Led a team of 45+ staff including 18 PA clinicians, processing 15,000+ Medicaid
-                                    authorization requests per month across DME, ambulance, private duty nursing, and
-                                    other service types. Owned escalation routing, quality review, staffing, policy
-                                    interpretation, and performance improvement.
-                                </p>
-                                <div class="project-expandable">
-                                    <div class="project-details">
-                                        <ul class="role-bullets">
-                                            <li>Converted policy ambiguity into documented, defensible clinical
-                                                decisions and reusable team guidance.</li>
-                                            <li>Built and deployed a citation-backed policy-search agent and designed
-                                                a qualification-based staffing planner that saved each supervisor
-                                                15–20 minutes daily.</li>
-                                        </ul>
-                                    </div>
-                                    <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="role-item" id="role-pa-clinician">
-                        <div class="role-content">
-                            <span class="eyebrow">April 2022 &mdash; February 2025</span>
-                            <h3 class="role-title">Prior Authorization Clinician (RN)</h3>
-                            <p class="role-company">TMHP</p>
-                            <div class="role-body">
-                                <p>Reviewed Medicaid prior authorization requests against TMPPM criteria across DME,
-                                    therapy, nursing services, and ambulance transport. Three years of approving,
-                                    denying, and pending cases under SLA pressure taught me where policy is clear, where
-                                    documentation fails, and where clinicians lose time.</p>
-                                <div class="project-expandable">
-                                    <div class="project-details">
-                                        <ul class="role-bullets">
-                                            <li>Identified recurring documentation gaps across provider submissions and
-                                                developed communication patterns that improved response quality,
-                                                turning a source of constant rework into a manageable process.</li>
-                                            <li>Built a Python desktop GUI that automated repetitive PA data entry
-                                                (unit calculations, clinician comments, system navigation)
-                                                and 5x'd my own processing throughput from 5 to 25 authorizations per
-                                                hour without sending PHI to external services.</li>
-                                        </ul>
-                                    </div>
-                                    <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="role-item" id="role-home-health">
-                        <div class="role-content">
-                            <span class="eyebrow">April 2019 &mdash; March 2022</span>
-                            <h3 class="role-title">Home Health RN</h3>
-                            <p class="role-company">Home Health Agency</p>
-                            <div class="role-body">
-                                <p>Managed a complex home health caseload and saw how much clinical time disappeared into
-                                    documentation. That was where I started using Python to remove repetitive EMR work.</p>
-                                <div class="project-expandable">
-                                    <div class="project-details">
-                                        <ul class="role-bullets">
-                                            <li>Built a suite of Python Selenium scripts that automated the full
-                                                documentation submission workflow in the home health EMR,
-                                                reducing per-encounter documentation time from 45 minutes to 4 minutes.
-                                            </li>
-                                            <li>Designed a web-based patient dashboard tracking seizure frequency,
-                                                medication administration, feeding schedules, and vital sign trends,
-                                                replacing manual chart reviews across multiple systems with a
-                                                single consolidated view.</li>
-                                        </ul>
-                                    </div>
-                                    <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="role-item" id="role-neuro">
-                        <div class="role-content">
-                            <span class="eyebrow">June 2018 &mdash; March 2019</span>
-                            <h3 class="role-title">Neuroscience Medical-Surgical RN</h3>
-                            <p class="role-company">Neuroscience Med-Surg Unit</p>
-                            <div class="role-body">
-                                <p>Worked directly with patients, families, and interdisciplinary teams on a high-acuity
-                                    neuroscience and medical-surgical unit. I learned healthcare operations first as the
-                                    person using them at the bedside. I still judge workflow changes by whether they help
-                                    the patient or the clinician doing the work.</p>
-                                <div class="project-expandable">
-                                    <div class="project-details">
-                                        <ul class="role-bullets">
-                                            <li>Authored research on mobile tablet-based activities for stroke recovery,
-                                                accepted for presentation at the American Association of Neuroscience
-                                                Nurses (AANN) national conference.</li>
-                                            <li>Built the clinical reasoning discipline (pattern recognition
-                                                under pressure, evidence-based decision-making, precise documentation)
-                                                that later became the foundation for translating clinical logic
-                                                into automatable workflows.</li>
-                                        </ul>
-                                    </div>
-                                    <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
+                <div class="principle-grid pyz-rise">
+                    <article>
+                        <span class="principle-index">01</span>
+                        <h3>Show the proof</h3>
+                        <p>I link claims to the implementation, tests, commits, CI runs, releases, or a dated live check. When the proof is limited, I narrow the claim.</p>
+                    </article>
+                    <article>
+                        <span class="principle-index">02</span>
+                        <h3>Make failure visible</h3>
+                        <p>Tink stops on unsafe trees. Ask JDP blocks cross-session access and known injection patterns. The evaluator refuses to score evidence it cannot validate.</p>
+                    </article>
+                    <article>
+                        <span class="principle-index">03</span>
+                        <h3>Say what is still unknown</h3>
+                        <p>I do not imply adoption, causal impact, security certification, or universal model gains. The repositories do not establish those things.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section" data-camera="bridge">
+        <section id="background" class="section" data-camera="clinical-ops">
             <div class="container">
                 <div class="scrim scrim-wide">
                     <div class="section-header pyz-rise">
-                        <p class="overline">03 · Projects</p>
-                        <h2>Workflow tools built around clinical work</h2>
+                        <p class="overline">03 · Background</p>
+                        <h2>What clinical operations taught me about software</h2>
                     </div>
-                </div>
-                <div class="project-stack pyz-rise">
-                    <article class="project-entry">
-                        <span class="project-category">AI / RAG</span>
-                        <h3 class="project-title">Medicaid Policy Search Agent</h3>
-                        <p class="project-oneliner">AI agent that indexes 1,800+ pages of policy to deliver
-                            citation-backed answers in under 30 seconds.</p>
-                        <p class="project-metrics"><span>10–20 min → 30 sec · Policy search time</span><span>1,800+ pages indexed</span></p>
-
-                        <p class="project-problem"><strong>Problem:</strong> PA clinicians were spending 10–20 minutes
-                            manually searching a 1,800+ page policy corpus for a single clarification, risking missed
-                            details and inconsistent decisions.</p>
-
-                        <div class="project-expandable">
-                            <div class="project-details">
-                                <hr class="project-divider">
-                                <p><strong>What I built:</strong> A Microsoft Copilot RAG agent that indexes the policy
-                                    corpus and returns concise answers with source and page citations.</p>
-                                <div class="chip-row">
-                                    <span class="feature-chip">Source &amp; page citations</span>
-                                    <span class="feature-chip">Risk flags</span>
-                                </div>
-                                <p>Reviewers retained responsibility for the final interpretation and clinical
-                                    decision.</p>
-
-                                <div class="project-callout">
-                                    <p><strong>Result:</strong> The tool reduced a routine 10–20 minute lookup
-                                        to under 30 seconds while keeping citations and risk flags visible to the
-                                        reviewer. This public account uses aggregate outcomes only; it contains no
-                                        policy excerpts, production data, or employer-system screenshots.</p>
-                                </div>
-                            </div>
-                            <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
+                    <div class="background-grid pyz-rise">
+                        <div class="about-text-column">
+                            <p>Before I built public developer tools, I worked as a bedside RN and in Texas Medicaid prior authorization, eventually supervising the operation. That work made a few lessons hard to forget. Evidence has to survive review. Sensitive data needs a clear boundary. A fast answer is not much use if nobody can defend it.</p>
+                            <p>I bring those lessons to agent systems, developer tools, and applied AI. The projects here lead with work you can inspect directly.</p>
                         </div>
-
-                        <a href="case-studies/policy-search.html" class="btn btn-secondary">Read case study</a>
-
-                        <div class="project-meta">
-                            <span>Microsoft Copilot Studio</span>
-                            <span>RAG</span>
-                            <span>Prompt Engineering</span>
-                            <span>Knowledge Management</span>
+                        <div class="background-aside">
+                            <p class="eyebrow">Working stack</p>
+                            <ul class="stack-list">
+                                <li>Rust · Python · TypeScript</li>
+                                <li>React · Hono · SQLite</li>
+                                <li>Agent harnesses · evals · CI</li>
+                                <li>Clinical workflow translation</li>
+                            </ul>
+                            <a href="assets/Jonathan_DeLaPaz_Resume.pdf" class="text-link" target="_blank" rel="noopener noreferrer">Read the résumé <span aria-hidden="true">↗</span></a>
                         </div>
-                    </article>
-
-                    <article class="project-entry">
-                        <span class="project-category">Full-Stack / Algorithm</span>
-                        <h3 class="project-title">Operations Dashboard + Planner</h3>
-                        <p class="project-oneliner">Flask dashboard with real-time inventory visibility and a greedy
-                            qualification-based algorithm that supports daily staffing assignments and saves each
-                            supervisor 15–20 minutes a day.
-                        </p>
-
-                        <p class="project-metrics"><span>15–20 min saved · Daily planning per supervisor</span></p>
-
-                        <p class="project-problem"><strong>Problem:</strong> Daily staffing assignments were done by gut
-                            feel without a transparent view of inventory and staff qualifications.</p>
-
-                        <div class="project-expandable">
-                            <div class="project-details">
-                                <hr class="project-divider">
-                                <p><strong>What I built:</strong> A Flask web app with two modules:</p>
-                                <div class="chip-row">
-                                    <span class="feature-chip">Live inventory dashboard</span>
-                                    <span class="feature-chip">Greedy allocation algorithm</span>
-                                    <span class="feature-chip">Staff qualification matrix</span>
-                                </div>
-                                <p>The planner generates proposed assignments using due dates, staff qualifications,
-                                    and remaining volume as explicit criteria.</p>
-
-                                <div class="project-callout">
-                                    <p><strong>Result:</strong> The planner saved each supervisor 15–20 minutes a day and
-                                        supported staffing for a 45+ person operation processing 15,000+ cases monthly.
-                                        Its recommendations stayed inspectable: supervisors could see the due dates,
-                                        qualifications, and remaining volume behind each assignment.</p>
-                                </div>
-                            </div>
-                            <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                        </div>
-
-                        <div class="project-meta">
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>Chart.js</span>
-                            <span>Greedy Algorithm</span>
-                        </div>
-
-                    </article>
-
-                    <article class="project-entry">
-                        <span class="project-category">Process Automation</span>
-                        <h3 class="project-title">PA Processing Automation</h3>
-                        <p class="project-oneliner">Desktop tool that automated repetitive PA data entry and raised
-                            throughput from 5 to 25 cases per hour.</p>
-
-                        <p class="project-metrics"><span>5x throughput · 5/hr → 25/hr</span></p>
-
-                        <p class="project-problem"><strong>Problem:</strong> Manual data entry (unit calculations,
-                            comments, navigation) bottlenecked PA processing to 5 cases per hour, absorbing ~12 minutes
-                            per case.</p>
-
-                        <div class="project-expandable">
-                            <div class="project-details">
-                                <hr class="project-divider">
-                                <p><strong>What I built:</strong> A Python desktop application using PySimpleGUI that
-                                    standardizes repetitive calculations, comments, and system interactions while
-                                    keeping the clinician responsible for the authorization decision.</p>
-                                <div class="chip-row">
-                                    <span class="feature-chip">Auto-calculation of units</span>
-                                    <span class="feature-chip">Standardized comment generation</span>
-                                    <span class="feature-chip">Automated keystroke orchestration</span>
-                                </div>
-                                <div class="project-callout">
-                                    <p><strong>Security &amp; Compliance:</strong> Operated strictly client-side to drive UI
-                                        interactions without saving, logging, or transmitting any PHI to external
-                                        servers.</p>
-                                    <p class="callout-follow"><strong>Result:</strong> I built this as an individual
-                                        contributor and increased my own throughput from 5 to 25 authorizations per hour.
-                                        The clinician still made every authorization decision.</p>
-                                </div>
-                            </div>
-                            <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                        </div>
-
-                        <a href="case-studies/workflow-automation.html" class="btn btn-secondary">Read case study</a>
-
-                        <div class="project-meta">
-                            <span>Python</span>
-                            <span>PySimpleGUI</span>
-                            <span>RPA</span>
-                            <span>pyautogui</span>
-                        </div>
-                    </article>
-
-                    <article class="project-entry">
-                        <span class="project-category">Clinical Automation</span>
-                        <h3 class="project-title">Selenium Documentation Automation</h3>
-                        <p class="project-oneliner">Headless automation scripts that reduced home health
-                            documentation time by 11x (from 45 to 4 minutes).</p>
-
-                        <p class="project-metrics"><span>11x faster · Per-encounter documentation</span><span>45 min → 4 min</span></p>
-
-                        <p class="project-problem"><strong>Problem:</strong> Per-encounter clinical documentation
-                            required ~45 minutes of tedious EMR form navigation instead of clinical thinking.</p>
-
-                        <div class="project-expandable">
-                            <div class="project-details">
-                                <hr class="project-divider">
-                                <p><strong>What I built:</strong> Headless Python automation using Selenium WebDriver.
-                                </p>
-                                <div class="chip-row">
-                                    <span class="feature-chip">Maps EMR workflow screen-by-screen</span>
-                                    <span class="feature-chip">Branching script logic</span>
-                                    <span class="feature-chip">Static &amp; dynamic field handling</span>
-                                </div>
-                                <p>The hard part was mapping the clinical documentation logic closely enough to automate
-                                    the form work without introducing errors into the patient record.</p>
-
-                                <div class="project-callout">
-                                    <p><strong>Security &amp; Compliance:</strong> Scripts executed entirely within the
-                                        local secure session, retaining zero patient data or PHI post-execution.</p>
-                                    <p class="callout-follow"><strong>Result:</strong> This was my first automation
-                                        project. It cut documentation time from 45 minutes to 4 minutes per encounter and
-                                        gave that time back to patient care.</p>
-                                </div>
-                            </div>
-                            <button class="expand-btn">Read more <span class="expand-icon">+</span></button>
-                        </div>
-
-                        <div class="project-meta">
-                            <span>Python</span>
-                            <span>Selenium</span>
-                            <span>EMR Automation</span>
-                            <span>Home Health</span>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section" data-camera="whole-tight">
-            <div class="container">
-                <div class="section-header pyz-rise">
-                    <p class="overline">04 · Skills</p>
-                    <h2>Clinical · Technical · Operational</h2>
-                </div>
-                <ul class="domain-legend pyz-rise" aria-label="Domain legend">
-                    <li><span class="swatch clinical" aria-hidden="true"></span> Clinical</li>
-                    <li><span class="swatch operational" aria-hidden="true"></span> Operational</li>
-                    <li><span class="swatch technical" aria-hidden="true"></span> Technical</li>
-                </ul>
-                <div class="skills-grid pyz-rise">
-
-                    <!-- Clinical & Domain -->
-                    <div class="skill-category skill-category--blue clinical-domain">
-                        <h3 class="skill-group-header">Clinical &amp; Domain</h3>
-                        <div class="pill-cluster">
-                            <span class="pill pill-accent pill-blue" data-skill="RN License (Active, Texas)">RN License
-                                (Active, Texas)</span>
-                            <span class="pill pill-accent pill-blue" data-skill="PA Operations (Texas Medicaid)">PA
-                                Operations (Texas Medicaid)</span>
-                            <span class="pill pill-std pill-blue" data-skill="Utilization Management">Utilization
-                                Management</span>
-                            <span class="pill pill-std pill-blue" data-skill="CMS Regulations">CMS Regulations</span>
-                            <span class="pill pill-std pill-blue" data-skill="MCO Transitions &amp; Eligibility">MCO
-                                Transitions &amp; Eligibility</span>
-                            <span class="pill pill-std pill-blue" data-skill="Clinical Policy (TMPPM)">Clinical Policy
-                                (TMPPM)</span>
-                        </div>
-                    </div>
-
-                    <!-- Technical -->
-                    <div class="skill-category skill-category--green technical">
-                        <h3 class="skill-group-header">Technical</h3>
-                        <div class="pill-cluster">
-                            <span class="pill pill-accent pill-green" data-skill="Python">Python</span>
-                            <span class="pill pill-accent pill-green" data-skill="RAG / AI Agents">RAG / AI
-                                Agents</span>
-                            <span class="pill pill-accent pill-green" data-skill="Context Engineering">Context
-                                Engineering</span>
-                            <span class="pill pill-accent pill-green" data-skill="Agent Harnesses">Agent
-                                Harnesses</span>
-                            <span class="pill pill-accent pill-green" data-skill="Evals">Evals</span>
-                            <span class="pill pill-accent pill-green" data-skill="Prompt Engineering">Prompt
-                                Engineering</span>
-                            <span class="pill pill-std pill-green" data-skill="Local Models">Local Models</span>
-                            <span class="pill pill-std pill-green" data-skill="LLM Wikis">LLM Wikis</span>
-                            <span class="pill pill-std pill-green" data-skill="Coding Agents">Coding Agents</span>
-                            <span class="pill pill-std pill-green" data-skill="MCP / Tool Use">MCP / Tool Use</span>
-                            <span class="pill pill-std pill-green" data-skill="Multi-Agent Workflows">Multi-Agent
-                                Workflows</span>
-                            <span class="pill pill-std pill-green" data-skill="Agent Memory">Agent Memory</span>
-                            <span class="pill pill-std pill-green" data-skill="Flask">Flask</span>
-                            <span class="pill pill-std pill-green" data-skill="PySimpleGUI">PySimpleGUI</span>
-                            <span class="pill pill-std pill-green" data-skill="RPA (pyautogui, Selenium)">RPA
-                                (pyautogui, Selenium)</span>
-                            <span class="pill pill-std pill-green" data-skill="Microsoft Copilot Studio">Microsoft
-                                Copilot Studio</span>
-                            <span class="pill pill-std pill-green" data-skill="Data Visualization (Chart.js)">Data
-                                Visualization (Chart.js)</span>
-                            <span class="pill pill-std pill-green" data-skill="Algorithm Design">Algorithm Design</span>
-                            <span class="pill pill-std pill-green" data-skill="Excel Automation (openpyxl)">Excel
-                                Automation (openpyxl)</span>
-                            <span class="pill pill-std pill-green" data-skill="Power Automate">Power Automate</span>
-                            <span class="pill pill-std pill-green"
-                                data-skill="Compliance-Aware Process Automation">Compliance-Aware Process
-                                Automation</span>
-                        </div>
-                    </div>
-
-                    <!-- Operations & Leadership -->
-                    <div class="skill-category skill-category--amber operations">
-                        <h3 class="skill-group-header">Operations &amp; Leadership</h3>
-                        <div class="pill-cluster">
-                            <span class="pill pill-accent pill-amber"
-                                data-skill="Clinical Workflow → Technical Requirements Translation">Clinical Workflow
-                                &rarr; Technical Requirements Translation</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="Process Design &amp; Documentation">Process Design &amp;
-                                Documentation</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="Performance Management (PIPs, QA)">Performance Management (PIPs, QA)</span>
-                            <span class="pill pill-std pill-amber" data-skill="Training Development">Training
-                                Development</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="Root Cause Analysis &amp; QA Auditing">Root Cause Analysis &amp; QA
-                                Auditing</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="Clinical Staff Onboarding &amp; Enablement">Clinical Staff Onboarding &amp;
-                                Enablement</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="SLA Management &amp; Capacity Planning">SLA Management &amp; Capacity
-                                Planning</span>
-                            <span class="pill pill-std pill-amber"
-                                data-skill="Cross-Functional Stakeholder Coordination">Cross-Functional Stakeholder
-                                Coordination</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
         <section id="contact" class="section contact" data-camera="settle">
             <div class="container contact-container pyz-rise">
-                <h2 class="contact-title">I'm looking for my next clinical operations role.</h2>
-                <p class="contact-subtitle">
-                    My target roles sit in utilization management, clinical operations, informatics, or implementation.
-                    I bring direct payer-operations leadership and a record of building privacy-conscious workflow
-                    tools for the teams I worked on.</p>
-
-                <div class="contact-links-row">
-                    <!-- Resume -->
-                    <a href="assets/Jonathan_DeLaPaz_Resume.pdf" target="_blank" rel="noopener noreferrer"
-                        class="contact-link-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                        <span>Download Resume</span>
-                    </a>
-
-                    <span class="contact-divider" aria-hidden="true"></span>
-
-                    <!-- Email -->
-                    <a href="mailto:jonathan10620.dev@gmail.com" class="contact-link-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <polyline points="2,4 12,13 22,4" />
-                        </svg>
-                        <span>jonathan10620.dev@gmail.com</span>
-                    </a>
-
-                    <span class="contact-divider" aria-hidden="true"></span>
-
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/jonathan-delapaz/" target="_blank" rel="noopener noreferrer"
-                        class="contact-link-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                        <span>LinkedIn</span>
-                    </a>
-
-                    <span class="contact-divider" aria-hidden="true"></span>
-
-                    <!-- X -->
-                    <a href="https://x.com/jon_dev_lapaz" target="_blank" rel="noopener noreferrer"
-                        class="contact-link-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                        <span>X</span>
-                    </a>
-
+                <p class="overline">04 · Contact</p>
+                <h2 class="contact-title">Let's talk.</h2>
+                <p class="contact-subtitle">I'm looking for software engineering roles in AI systems, developer tools, or applied clinical technology.</p>
+                <div class="contact-cta-row">
+                    <a href="mailto:jonathan10620.dev@gmail.com" class="btn btn-primary">Email Jonathan</a>
+                    <a href="https://www.linkedin.com/in/jonathan-delapaz/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+                    <a href="https://github.com/jon-devlapaz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
                 </div>
-
-                <p class="contact-location">Austin, Texas | Remote across the United States</p>
+                <p class="contact-location">Austin, Texas · Remote across the United States</p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Jonathan De La Paz BSN, RN</p>
+        <div class="container footer-row">
+            <p>&copy; 2026 Jonathan De La Paz</p>
+            <p><a href="evidence.html">Claim evidence</a></p>
         </div>
     </footer>
 
     <div class="motion-hint" id="motion-hint" hidden>
         <div>Motion is reduced on this device. Enable full motion for smooth scrolling and the animated background.</div>
         <button type="button" class="primary" id="motion-enable">Enable full motion</button>
-        <button type="button" id="motion-dismiss">Keep calm</button>
+        <button type="button" id="motion-dismiss">Keep reduced motion</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/force-graph@1.51.4/dist/force-graph.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
-    <script src="js/motion.js"></script>
-    <script src="js/smooth-scroll.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/ambient-graph.js"></script>
-    <script src="js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/force-graph@1.51.4/dist/force-graph.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+    <script defer src="js/motion.js?v=20260812e"></script>
+    <script defer src="js/smooth-scroll.js?v=20260812j"></script>
+    <script defer src="js/cursor.js?v=20260812e"></script>
+    <script defer src="js/ambient-graph.js?v=20260812f"></script>
+    <script defer src="js/app.js?v=20260812h"></script>
 </body>
 
 </html>

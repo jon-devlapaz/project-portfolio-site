@@ -1,0 +1,13 @@
+{
+  "name": "jonathan-delapaz-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jonathan De La Paz's engineering portfolio, with public proof for each case study.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/verify.mjs",
+    "check:external": "node scripts/check-external-links.mjs",
+    "check:syntax": "node --check js/app.js && node --check js/motion.js && node --check js/smooth-scroll.js && node --check js/cursor.js && node --check js/ambient-graph.js",
+    "verify": "npm run check:syntax && npm run build"
+  }
+}
